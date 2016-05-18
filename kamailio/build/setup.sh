@@ -1,3 +1,4 @@
 #!/bin/sh
-kamdbctl reinit
-kamctl dispatcher add 1 sip:freeswitch.fqdn:11000 1 5 ' ' 'freeswitch'
+git clone --depth 1 --no-single-branch https://github.com/mreiferson/libevbuffsock libevbuffsock
+git clone --depth 1 --no-single-branch https://github.com/nsqio/libnsq libnsq
+git clone --depth 1 --no-single-branch https://github.com/kamailio/kamailio.git kamailio

@@ -7,10 +7,8 @@ RUN ./setup-os.sh
 COPY build/setup.sh setup.sh
 RUN ./setup.sh
 
-COPY etc/ etc
+COPY build/setup-erlang.sh setup-erlang.sh
+RUN ./setup-erlang.sh
 
 COPY build/build.sh build.sh
 RUN ./build.sh
-
-COPY build/run.sh run.sh
-ENTRYPOINT ["./run.sh"]

@@ -29,7 +29,6 @@ DBENGINE=DBTEXT
 
 # database path used by dbtext, db_berkeley or sqlite
 DB_PATH="/etc/kazoo/kamailio/dbtext"
-DBTEXT_PATH="/etc/kazoo/kamailio/dbtext"
 
 ## database read/write user
 # DBRWUSER="kamailio"
@@ -149,4 +148,5 @@ INSTALL_DBUID_TABLES=yes
 
 ## Extra start options - default is: not set
 # example: start Kamailio with 64MB share memory: STARTOPTIONS="-m 64"
-STARTOPTIONS="-m 128 -M 8 -X tlsf"
+STARTOPTIONS="-M 128 -m 512"
+
