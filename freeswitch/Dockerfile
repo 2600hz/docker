@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM kazoo/base-os
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 WORKDIR "/root"

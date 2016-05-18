@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM kazoo/base-os
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 COPY build/setup-os.sh /root/setup-os.sh
@@ -25,3 +25,11 @@ RUN ./setup.sh
 
 COPY build/build.sh build.sh
 RUN ./build.sh
+
+USER root
+RUN git clone https://github.com/2600hz/kazoo-configs /etc/kazoo
+
+COPY build/install-bigcouch.sh install-bigcouch.sh
+RUN ./install-bigcouch.sh
+
+USER $USERNAME
