@@ -1,2 +1,4 @@
 #!/bin/sh
-docker run -td --name kazoo-freeswitch kazoo/freeswitch
+docker stop kazoo-freeswitch
+docker rm kazoo-freeswitch
+docker run -ti --name kazoo-freeswitch kazoo/freeswitch
