@@ -1,2 +1,7 @@
 #!/bin/sh
-docker run -td --name kazoo-kamailio kazoo/kamailio
+FLAGS=$1
+if [ "$FLAGS" = "" ]
+then
+	FLAGS=-td
+fi
+docker run $FLAGS --name kazoo-kamailio kazoo/kamailio

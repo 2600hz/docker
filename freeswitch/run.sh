@@ -1,4 +1,7 @@
 #!/bin/sh
-docker stop kazoo-freeswitch
-docker rm kazoo-freeswitch
-docker run -ti --name kazoo-freeswitch kazoo/freeswitch
+FLAGS=$1
+if [ "$FLAGS" = "" ]
+then
+	FLAGS=-td
+fi
+docker run $FLAGS --name kazoo-freeswitch kazoo/freeswitch

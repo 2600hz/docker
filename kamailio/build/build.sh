@@ -9,6 +9,6 @@ make install
 
 cd ../kamailio
 make cfg
-copy ../etc/modules.lst ./
+cp ../etc/modules.lst ./
 make
 make install
