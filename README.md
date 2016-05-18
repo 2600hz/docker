@@ -1,10 +1,14 @@
-Bigcouch docker build
-=====================
+Kazoo components as docker images
+=================================
 
-Builds the bigcouch docker image from debian:jessie.
+Goal
+====
+
+To have all kazoo components as independent docker containers.
 
 Notes
 =====
 
-Ideally all images should build themselves from scratch, syncing with the repo commits.
-But for now freeswitch and kamailio images are built from their Debian repoistories.
+1. All components depends on base-os image.
+2. Bigcouch is superceded by CouchDB 2.0
+3. Actual container configuration is missing (for now they only compiles)
