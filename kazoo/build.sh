@@ -1,4 +1,3 @@
 #!/bin/sh
-docker stop kazoo/kazoo
-docker rm kazoo/kazoo
+docker rmi --force kazoo/kazoo
 docker build -t kazoo/kazoo .

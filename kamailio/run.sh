@@ -6,4 +6,4 @@ then
 fi
 docker stop kazoo-kamailio
 docker rm kazoo-kamailio
-docker run $FLAGS --name kazoo-kamailio kazoo/kamailio
+docker run $FLAGS --net kazoo --name kazoo-kamailio kazoo/kamailio
