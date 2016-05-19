@@ -1,2 +1,4 @@
 #!/bin/sh
-docker run -td --name kazoo-couchdb kazoo/couchdb
+docker stop kazoo-couchdb
+docker rm kazoo-couchdb
+docker run -td --net kazoo --name kazoo-couchdb kazoo/couchdb
