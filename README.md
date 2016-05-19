@@ -17,11 +17,13 @@ Usage
 =====
 
 ```
+build.sh
 up.sh
 hosts.sh >> /etc/hosts
+admin.sh
 ```
 
-admin.sh gives access to host inside the kazoo network.
+admin.sh gives access to the host inside the kazoo network.
 
 TODO
 ====

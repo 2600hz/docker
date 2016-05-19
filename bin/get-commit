@@ -1,0 +1,8 @@
+#!/bin/sh
+if [ "$1" = "" ]
+then
+	echo Usage: $0 remote-git-uri
+	exit
+fi
+
+git ls-remote $1 | head -1 | sed "s/HEAD//"

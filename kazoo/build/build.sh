@@ -1,4 +1,5 @@
 #!/bin/sh
 . erlang/activate
 cd kazoo
-make
+git pull
+make install
