@@ -4,25 +4,21 @@ MAINTAINER Roman Galeev <jamhed@2600hz.com>
 ENV DEBIAN_FRONTEND noninteractive
 ENV APT_LISTCHANGES_FRONTEND=none
 
-ENV BASH_ENV .bashrc
+WORKDIR "/root"
 
 COPY etc/sources.list /etc/apt
 
-USER root
-WORKDIR /root
 COPY build/setup-os.sh build/setup-os.sh
-COPY etc/profile .bashrc
 RUN build/setup-os.sh
 
-WORKDIR /home/user
-USER user
-
 COPY build/setup-erlang.sh build/setup-erlang.sh
-COPY build/setup-bin.sh build/setup-bin.sh
-COPY build/cleanup.sh build/cleanup.sh
+RUN build/setup-erlang.sh
+
+ENV BASH_ENV .bashrc
 COPY etc/profile .bashrc
 
-RUN build/setup-erlang.sh \
-	&& build/setup-bin.sh \
-	&& build/cleanup.sh \
-	&& rm -rf build
+COPY build/setup-bin.sh build/setup-bin.sh
+RUN build/setup-bin.sh
+
+COPY build/cleanup.sh build/cleanup.sh
+RUN build/cleanup.sh
