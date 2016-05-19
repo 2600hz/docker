@@ -1,4 +1,3 @@
 #!/bin/sh
-docker stop kazoo-kamailio
-docker rm kazoo-kamailio
+docker rmi --force kazoo/kamailio
 docker build -t kazoo/kamailio .

@@ -1,4 +1,3 @@
 #!/bin/sh
-docker stop kazoo-freeswitch
-docker rm kazoo-freeswitch
+docker rmi --force kazoo/freeswitch
 docker build -t kazoo/freeswitch .
