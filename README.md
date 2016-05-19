@@ -9,9 +9,9 @@ To have all Kazoo components as independent docker containers.
 Notes
 =====
 
-1. All components depends on base-os image (Debian:Jessie with Erlang 17 preinstalled)
-2. BigCouch is superceded by CouchDB 2.0
-3. All images are not optimized to reduce size (although it should be possible)
+* All components depends on base-os image (Debian:Jessie with Erlang 17 preinstalled)
+* BigCouch is replaced by CouchDB 2.0
+* All images are not optimized to reduce size (although it should be possible)
 
 Usage
 =====
@@ -22,3 +22,10 @@ hosts.sh >> /etc/hosts
 ```
 
 admin.sh gives access to host inside the kazoo network.
+
+TODO
+====
+
+* Initial configuration instructions
+* Prepare production images (binary only, without build infrastructure)
+* Kazoo and Monster-UI should rebuild themselves on commits
