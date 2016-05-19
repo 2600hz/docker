@@ -5,4 +5,4 @@ alias ls='ls $LS_OPTIONS'
 
 export PATH=~/bin:$PATH
 
-if [ -n erlang/activate ]; then . erlang/activate fi
+if [ -e erlang/activate ]; then . erlang/activate fi
