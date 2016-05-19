@@ -25,6 +25,18 @@ admin.sh
 
 admin.sh gives access to the host inside the kazoo network.
 
+Kazoo builds
+============
+```
+cd kazoo
+./build.sh https://github.com/2600hz/kazoo.git
+```
+
+It automatically checks and caches builds for the latest commit. When latest commit hash changes
+only necessary steps are performed to update the image (git pull/make install actually),
+utilizing the docker caching ability.
+
+
 TODO
 ====
 
