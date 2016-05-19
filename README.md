@@ -20,3 +20,5 @@ Usage
 up.sh
 hosts.sh >> /etc/hosts
 ```
+
+admin.sh gives access to host inside the kazoo network.
