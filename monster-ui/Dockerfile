@@ -7,5 +7,6 @@ RUN ./setup-os.sh
 COPY build/setup.sh setup.sh
 RUN ./setup.sh
 
+COPY etc etc
 COPY build/run.sh run.sh
 ENTRYPOINT "./run.sh"
