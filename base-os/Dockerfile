@@ -15,14 +15,13 @@ COPY etc/profile .bashrc
 RUN build/setup-os.sh
 
 WORKDIR /home/user
-USER user
 
-COPY build/setup-erlang.sh build/setup-erlang.sh
-COPY build/setup-bin.sh build/setup-bin.sh
-COPY build/cleanup.sh build/cleanup.sh
+COPY build build
 COPY etc/profile .bashrc
 
-RUN build/setup-erlang.sh \
-	&& build/setup-bin.sh \
-	&& build/cleanup.sh \
-	&& rm -rf build
+RUN chown user:user .bashrc \
+	&& su -l -c build/setup-erlang.sh user \
+	&& su -l -c build/setup-bin.sh user \
+	&& su -l -c build/cleanup.sh user
+
+USER user
