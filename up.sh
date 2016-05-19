@@ -5,3 +5,4 @@ couchdb/run.sh
 kamailio/run.sh
 freeswitch/run.sh
 kazoo/run.sh
+monster-ui/run.sh
