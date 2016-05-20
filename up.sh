@@ -6,3 +6,4 @@ kamailio/run.sh
 freeswitch/run.sh
 kazoo/run.sh
 monster-ui/run.sh
+kazoo-ui/run.sh

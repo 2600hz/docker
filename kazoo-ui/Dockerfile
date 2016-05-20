@@ -4,7 +4,7 @@ MAINTAINER Roman Galeev <jamhed@2600hz.com>
 USER root
 WORKDIR /root
 
-ARG REPO=https://github.com/2600hz/monster-ui.git 
+ARG REPO=https://github.com/2600hz/kazoo-ui.git 
 ENV WWW=/usr/share/nginx
 
 COPY build/setup-os.sh build/setup-os.sh

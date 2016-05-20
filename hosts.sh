@@ -1,5 +1,6 @@
 #!/bin/sh
 echo `bin/get-ip kazoo-monster-ui` monster-ui  
+echo `bin/get-ip kazoo-kazoo-ui` kazoo-ui  
 echo `bin/get-ip kazoo` kazoo 
 echo `bin/get-ip kazoo-rabbitmq` rabbitmq 
 echo `bin/get-ip kazoo-freeswitch` freeswitch 
