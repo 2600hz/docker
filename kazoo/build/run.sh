@@ -1,9 +1,9 @@
 #!/bin/sh
-export KAZOO_CONFIG=/root/config.ini
+export KAZOO_CONFIG=/home/user/config.ini
 
 . erlang/activate
 
-RELEASE_ROOT_DIR=/root/kazoo/_rel/kazoo
+RELEASE_ROOT_DIR=/home/user/kazoo/_rel/kazoo
 REL_NAME="kazoo"
 REL_VSN="4.0.0"
 ERTS_VSN="7.3"
@@ -38,4 +38,4 @@ ERTS_LIB_DIR="$ERTS_DIR/../lib"
 
 cd "$ROOTDIR"
 
-exec /root/kazoo/_rel/kazoo/erts-7.3/bin/erlexec -boot /root/kazoo/_rel/kazoo/releases/4.0.0/kazoo -mode embedded -boot_var ERTS_LIB_DIR /root/kazoo/_rel/kazoo/erts-7.3/../lib -config /root/kazoo/_rel/kazoo/releases/4.0.0/sys.config -args_file /root/kazoo/_rel/kazoo/releases/4.0.0/vm.args -- console
+exec /home/user/kazoo/_rel/kazoo/erts-7.3/bin/erlexec -boot /home/user/kazoo/_rel/kazoo/releases/4.0.0/kazoo -mode embedded -boot_var ERTS_LIB_DIR /home/user/kazoo/_rel/kazoo/erts-7.3/../lib -config /home/user/kazoo/_rel/kazoo/releases/4.0.0/sys.config -args_file /home/user/kazoo/_rel/kazoo/releases/4.0.0/vm.args -- console

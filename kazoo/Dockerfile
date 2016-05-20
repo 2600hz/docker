@@ -1,13 +1,14 @@
 FROM kazoo/base-os
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
+USER root
+
 COPY build/setup-os.sh setup-os.sh
 RUN ./setup-os.sh
 
-COPY build/setup-erlang.sh setup-erlang.sh
-RUN ./setup-erlang.sh
-
 ARG REPO=https://github.com/2600hz/kazoo.git
+
+USER user
 
 COPY build/setup.sh setup.sh
 RUN ./setup.sh

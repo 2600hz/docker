@@ -2,4 +2,4 @@
 . erlang/activate
 cd kazoo
 git pull
-make install
+make compile build-release
