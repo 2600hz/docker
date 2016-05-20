@@ -5,3 +5,4 @@ kamailio/build.sh
 freeswitch/build.sh
 kazoo/build.sh
 monster-ui/build.sh
+kazoo-ui/build.sh
