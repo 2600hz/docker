@@ -92,7 +92,6 @@ WhApps        : kamailio(1m43s)
 TODO
 ====
 
-* Kamailio integration
 * Prepare production images (binary only, without build infrastructure)
 * Kazoo and Monster-UI should rebuild themselves on commits
 * Third-party images should be version-bounded
