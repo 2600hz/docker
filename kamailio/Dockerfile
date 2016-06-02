@@ -14,8 +14,11 @@ COPY etc/ etc
 COPY build/build.sh build.sh
 RUN ./build.sh
 
+ENV HOME=/home/user
+
 COPY build/config-kazoo.sh config-kazoo.sh
 RUN ./config-kazoo.sh
 
 COPY build/run.sh run.sh
+COPY build/config-local.sh config-local.sh
 ENTRYPOINT ["./run.sh"]

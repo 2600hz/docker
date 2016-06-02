@@ -62,6 +62,31 @@ cd kazoo
 # Add admin user
 ./sup crossbar_maintenance create_account admin_name admin_realm admin admin_pass
 
+# Check RabbitMQ
+./sup kazoo_amqp_maintenance connection_summary
+
+# Check nodes
+./sup kz_nodes status
+Node          : kazoo@kazoo
+Version       : 4.0.0 - 18
+Memory Usage  : 199.42MB
+Processes     : 1820
+Ports         : 53
+Zone          : local
+Broker        : amqp://kazoo-rabbitmq:5672
+WhApps        : ecallmgr(1h45m58s)       ecallmgr(1h45m58s)       kazoo_globals(1h46m)     
+Channels      : 0
+Registrations : 0
+Media Servers : freeswitch@kazoo-freeswitch (1h45m58s)
+
+Node          : kamailio@kazoo-kamailio
+Version       : 5.0.0-dev4
+Memory Usage  : 14.27MB
+Processes     : 0
+Ports         : 0
+Zone          : local
+Broker        : amqp://kazoo-rabbitmq:5672
+WhApps        : kamailio(1m43s)
 ```
 
 TODO
