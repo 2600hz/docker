@@ -28,8 +28,10 @@ Kazoo builds
 ============
 ```
 cd kazoo
-./build.sh [https://github.com/2600hz/kazoo.git]
+./build.sh [REPO]
 ```
+
+Default REPO is https://github.com/2600hz/kazoo.git if omitted.
 
 It automatically checks and caches builds for the latest commit. When latest commit hash changes
 only necessary steps are performed to update the image (git pull/make install actually),
@@ -39,6 +41,9 @@ Kazoo Erlang console
 ====================
 ```
 docker exec -ti kazoo ./run.sh remote_console
+# or
+cd kazoo ; ./console
+
 ```
 Kazoo sup
 =========
@@ -56,9 +61,6 @@ cd kazoo
 
 # Add admin user
 ./sup crossbar_maintenance create_account admin_name admin_realm admin admin_pass
-
-# Kazoo Erlang console
-./console
 
 ```
 
