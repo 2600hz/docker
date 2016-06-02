@@ -24,5 +24,6 @@ ENTRYPOINT ./run.sh
 # Automatically trigger rebuild if commit changes
 COPY etc/commit /root/commit
 RUN ./build.sh
-COPY etc/vm.args kazoo/_rel/kazoo/releases/4.0.0/vm.args
 
+ENV PATH $PATH:/home/user/bin
+COPY build/sup bin/sup 

@@ -6,4 +6,4 @@ then
 fi
 docker stop kazoo-freeswitch
 docker rm kazoo-freeswitch
-docker run $FLAGS --net kazoo --name kazoo-freeswitch kazoo/freeswitch
+docker run $FLAGS --net kazoo -h kazoo-freeswitch --name kazoo-freeswitch kazoo/freeswitch

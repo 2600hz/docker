@@ -1,0 +1,20 @@
+#!/bin/sh
+if [ "$KAZOO_CONFIG" = "" ]
+then
+   export KAZOO_CONFIG=$HOME/config.ini
+fi
+
+if [ "$KAZOO_NODE" = "" ]
+then
+   KAZOO_NODE=kazoo@kazoo
+fi
+
+cd kazoo
+RELX_REPLACE_OS_VARS=true KZname="-sname $KAZOO_NODE" \
+	_rel/kazoo/bin/kazoo escript lib/sup-*/priv/sup.escript \
+	-n kazoo \
+	-h kazoo \
+	-c change_me \
+	-t 10 \
+	"$*"
+
