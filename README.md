@@ -18,11 +18,13 @@ Init
 
 ```
 build.sh
-up.sh
+run.sh
 hosts.sh >> /etc/hosts
 ```
 
 admin.sh gives access to the host inside the kazoo network.
+You need hosts file to access ui by http://kazoo-ui.kazoo and http://monster-ui.kazoo, and they,
+in turn, need to access http://kazoo.kazoo:8000, and you probably want to run UI on your host.
 
 Kazoo builds
 ============
@@ -40,7 +42,7 @@ utilizing the docker caching ability.
 Kazoo Erlang console
 ====================
 ```
-docker exec -ti kazoo ./run.sh remote_console
+docker exec -ti kazoo.kazoo ./run.sh remote_console
 # or
 cd kazoo ; ./console
 
@@ -65,19 +67,25 @@ cd kazoo
 # Check RabbitMQ
 ./sup kazoo_amqp_maintenance connection_summary
 
-# Check nodes
+# Check system status (this is probably what you should see)
 ./sup kz_nodes status
 Node          : kazoo@kazoo.kazoo
 Version       : 4.0.0 - 18
-Memory Usage  : 199.42MB
-Processes     : 1820
-Ports         : 53
+Memory Usage  : 190.55MB
+Processes     : 1816
+Ports         : 52
 Zone          : local
 Broker        : amqp://rabbitmq.kazoo:5672
-WhApps        : ecallmgr(1h45m58s)       ecallmgr(1h45m58s)       kazoo_globals(1h46m)     
+WhApps        : blackhole(4m19s)         callflow(4m19s)          cdr(4m19s)               conference(4m19s)        
+                crossbar(4m19s)          doodle(4m18s)            ecallmgr(4m18s)          fax(4m18s)               
+                hangups(3m58s)           hotornot(3m58s)          jonny5(3m58s)            kazoo_globals(4m20s)     
+                konami(3m58s)            media_mgr(3m58s)         milliwatt(3m58s)         omnipresence(3m58s)      
+                pivot(3m58s)             registrar(3m58s)         reorder(3m58s)           runtime_tools            
+                stepswitch(3m58s)        sysconf(4m19s)           teletype(3m58s)          trunkstore(3m58s)        
+                webhooks(3m58s)          
 Channels      : 0
 Registrations : 0
-Media Servers : freeswitch@freeswitch.kazoo (1h45m58s)
+Media Servers : freeswitch@freeswitch.kazoo (3m51s)
 
 Node          : kamailio@kamailio.kazoo
 Version       : 5.0.0-dev4
@@ -86,7 +94,7 @@ Processes     : 0
 Ports         : 0
 Zone          : local
 Broker        : amqp://rabbitmq.kazoo:5672
-WhApps        : kamailio(1m43s)
+WhApps        : kamailio(17m37s)
 ```
 
 TODO
