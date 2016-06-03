@@ -1,9 +1,9 @@
 #!/bin/sh
-echo `bin/get-ip kazoo-monster-ui` monster-ui  
-echo `bin/get-ip kazoo-kazoo-ui` kazoo-ui  
-echo `bin/get-ip kazoo` kazoo 
-echo `bin/get-ip kazoo-rabbitmq` rabbitmq 
-echo `bin/get-ip kazoo-freeswitch` freeswitch 
-echo `bin/get-ip kazoo-kamailio` kamailio 
-echo `bin/get-ip kazoo-couchdb` couchdb 
+echo `bin/get-ip monster-ui.kazoo` monster-ui.kazoo
+echo `bin/get-ip kazoo-ui.kazoo` kazoo-ui.kazoo
+echo `bin/get-ip kazoo.kazoo` kazoo.kazoo
+echo `bin/get-ip rabbitmq.kazoo` rabbitmq.kazoo 
+echo `bin/get-ip freeswitch.kazoo` freeswitch.kazoo
+echo `bin/get-ip kamailio.kazoo` kamailio.kazoo
+echo `bin/get-ip couchdb.kazoo` couchdb.kazoo
 

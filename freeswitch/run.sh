@@ -4,6 +4,7 @@ if [ "$FLAGS" = "" ]
 then
 	FLAGS=-td
 fi
-docker stop kazoo-freeswitch
-docker rm kazoo-freeswitch
-docker run $FLAGS --net kazoo -h kazoo-freeswitch --name kazoo-freeswitch kazoo/freeswitch
+NAME=freeswitch.kazoo
+docker stop $NAME
+docker rm $NAME
+docker run $FLAGS --net kazoo -h $NAME --name $NAME kazoo/freeswitch

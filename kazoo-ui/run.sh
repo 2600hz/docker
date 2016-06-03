@@ -4,6 +4,7 @@ if [ "$FLAGS" = "" ]
 then
 	FLAGS=-td
 fi
-docker stop kazoo-kazoo-ui
-docker rm kazoo-kazoo-ui
-docker run $FLAGS --net kazoo --name kazoo-kazoo-ui kazoo/kazoo-ui
+NAME=kazoo-ui.kazoo
+docker stop $NAME
+docker rm $NAME
+docker run $FLAGS --net kazoo -h $NAME --name $NAME kazoo/kazoo-ui

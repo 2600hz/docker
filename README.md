@@ -54,9 +54,9 @@ cd kazoo
 ./sup kapps_controller running_apps
 
 # Add Freeswitch node
-./sup ecallmgr_maintenance add_fs_node freeswitch@kazoo-freeswitch
+./sup ecallmgr_maintenance add_fs_node freeswitch@freeswitch.kazoo
 
-# Get freeswitch nodes (should be [<<"freeswitch@kazoo-freeswitch">>])
+# Get freeswitch nodes (should be [<<"freeswitch@freeswitch.kazoo">>])
 ./sup ecallmgr_config get fs_nodes
 
 # Add admin user
@@ -67,31 +67,32 @@ cd kazoo
 
 # Check nodes
 ./sup kz_nodes status
-Node          : kazoo@kazoo
+Node          : kazoo@kazoo.kazoo
 Version       : 4.0.0 - 18
 Memory Usage  : 199.42MB
 Processes     : 1820
 Ports         : 53
 Zone          : local
-Broker        : amqp://kazoo-rabbitmq:5672
+Broker        : amqp://rabbitmq.kazoo:5672
 WhApps        : ecallmgr(1h45m58s)       ecallmgr(1h45m58s)       kazoo_globals(1h46m)     
 Channels      : 0
 Registrations : 0
-Media Servers : freeswitch@kazoo-freeswitch (1h45m58s)
+Media Servers : freeswitch@freeswitch.kazoo (1h45m58s)
 
-Node          : kamailio@kazoo-kamailio
+Node          : kamailio@kamailio.kazoo
 Version       : 5.0.0-dev4
 Memory Usage  : 14.27MB
 Processes     : 0
 Ports         : 0
 Zone          : local
-Broker        : amqp://kazoo-rabbitmq:5672
+Broker        : amqp://rabbitmq.kazoo:5672
 WhApps        : kamailio(1m43s)
 ```
 
 TODO
 ====
 
+* Parametrize on network/domain (kazoo now)
 * Prepare production images (binary only, without build infrastructure)
 * Kazoo and Monster-UI should rebuild themselves on commits
 * Third-party images should be version-bounded

@@ -1,2 +1,2 @@
 #!/bin/sh
-docker exec -ti kazoo ./run.sh remote_console
+docker exec -ti kazoo.kazoo ./run.sh remote_console

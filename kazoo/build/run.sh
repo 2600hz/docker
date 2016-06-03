@@ -8,7 +8,7 @@ fi
 
 if [ "$KAZOO_NODE" = "" ]
 then
-   KAZOO_NODE=kazoo@kazoo
+   KAZOO_NODE=kazoo@$(hostname)
 fi
 
 CMD=$1
@@ -20,7 +20,7 @@ else
 fi
 
 export RELX_REPLACE_OS_VARS=true
-export KZname="-sname $KAZOO_NODE"
+export KZname="-name $KAZOO_NODE"
 
 cd kazoo
 exec _rel/kazoo/bin/kazoo $CMD "$*"

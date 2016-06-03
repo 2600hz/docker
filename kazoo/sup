@@ -1,2 +1,2 @@
 #!/bin/sh
-docker exec -ti kazoo sup "$*"
+docker exec -ti kazoo.kazoo sup "$*"
