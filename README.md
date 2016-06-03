@@ -4,14 +4,19 @@ Kazoo components as docker images
 Goal
 ====
 
-To have all Kazoo components as independent docker containers.
+To have all Kazoo components as independent docker containers. Containers are buildable
+from scratch (source code repo), and rebuildable to allow quick development of various components:
+
+1. edit source code
+2. commit
+3. rebuild and re-run container on commit
 
 Notes
 =====
 
 * All components depends on base-os image (Debian:Jessie with Erlang 17 preinstalled)
 * BigCouch is replaced by CouchDB 2.0
-* All images are not optimized to reduce size (although it should be possible)
+* All images are not optimized by size (however it should be possible)
 
 Init
 ====
