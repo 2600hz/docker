@@ -67,7 +67,7 @@ cd kazoo
 ./sup ecallmgr_config get fs_nodes
 
 # Add admin user
-./sup crossbar_maintenance create_account admin_name admin_realm admin admin_pass
+./sup crossbar_maintenance create_account admin_name kamailio.kazoo admin admin
 
 # Check RabbitMQ
 ./sup kazoo_amqp_maintenance connection_summary

@@ -8,7 +8,5 @@ make
 make install
 
 cd ../kamailio
-make cfg
-cp ../etc/modules.lst ./
 make
 make install

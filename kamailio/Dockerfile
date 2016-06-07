@@ -9,13 +9,13 @@ RUN ./setup-os.sh
 COPY build/setup.sh setup.sh
 RUN ./setup.sh
 
-COPY etc/ etc
-
+COPY etc/modules.lst /home/user/kamailio/
 COPY build/build.sh build.sh
 RUN ./build.sh
 
 ENV HOME=/home/user
 
+COPY etc/ etc
 COPY build/config-kazoo.sh config-kazoo.sh
 RUN ./config-kazoo.sh
 

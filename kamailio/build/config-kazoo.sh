@@ -9,4 +9,6 @@ sed -i -E  's/modparam\("mi_fifo"/#modparam\("mi_fifo"/g' /etc/kamailio/default.
 
 cp /etc/kamailio/local.cfg /etc/kamailio/local.cfg.orig
 
+rsync -av etc/kamailio/dbtext /etc/kamailio/
+
 useradd -d /var/run/kamailio kamailio
