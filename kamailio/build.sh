@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build -t kazoo/kamailio .
+docker build $1 -t kazoo/kamailio .
