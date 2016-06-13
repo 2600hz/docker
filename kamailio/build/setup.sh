@@ -5,4 +5,4 @@ git clone --depth 1 --no-single-branch https://github.com/kamailio/kamailio.git 
 
 # temporary
 cd libevbuffsock
-git checkout ee239ec
+# git checkout ee239ec
