@@ -1,2 +1,1 @@
 id(int,auto) setid(int) destination(string) flags(int) priority(int) attrs(string) description(string)
-1:1:sip\:freeswitch.kazoo\:11000:0:1: :  
