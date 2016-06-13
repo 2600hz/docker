@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  rabbitmq.kazoo:
+    image: kazoo/rabbitmq
+  couchdb.kazoo:
+    image: kazoo/couchdb
+  kamailio.kazoo:
+    image: kazoo/kamailio
+    depends_on:
+      - rabbitmq.kazoo 
+      - couchdb.kazoo 
+  freeswitch.kazoo:
+    image: kazoo/freeswitch
+    depends_on:
+      - rabbitmq.kazoo 
+      - couchdb.kazoo 
+  kazoo.kazoo:
+    image: kazoo/kazoo
+    depends_on:
+      - kamailio.kazoo 
+      - freeswitch.kazoo 
