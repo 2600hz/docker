@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build -t kazoo/base-os .
+docker build $1 -t kazoo/base-os .
