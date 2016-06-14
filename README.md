@@ -69,6 +69,9 @@ cd kazoo
 # Add admin user
 ./sup crossbar_maintenance create_account admin_name kamailio.kazoo admin admin
 
+# Import Kazoo voice prompts
+./sup kazoo_media_maintenance import_prompts /home/user/kazoo-sounds/kazoo-core/en/us en-us
+
 # Check RabbitMQ
 ./sup kazoo_amqp_maintenance connection_summary
 

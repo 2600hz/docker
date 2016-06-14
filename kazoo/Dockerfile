@@ -29,4 +29,4 @@ ENV PATH $PATH:/home/user/bin
 COPY build/sup bin/sup 
 
 COPY build/config-kazoo.sh config-kazoo.sh
-RUN config-kazoo.sh
+RUN ./config-kazoo.sh
