@@ -132,3 +132,4 @@ TODO
 * Prepare production images (binary only, without build infrastructure)
 * Kazoo and Monster-UI should rebuild themselves on commits
 * Third-party images should be version-bounded
+* Inter-container file exchange for sup (monster-ui apps, kazoo-sounds)
