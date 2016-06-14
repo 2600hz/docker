@@ -105,6 +105,26 @@ Broker        : amqp://rabbitmq.kazoo:5672
 WhApps        : kamailio(17m37s)
 ```
 
+Monster-UI
+==========
+
+How to register Monster-UI apps.
+
+1. You need to have monster-ui and kazoo images running
+2. You need to copy apps from monster-ui to kazoo
+3. You need to 'register' these apps
+
+
+
+```
+docker cp monster-ui.kazoo:/usr/share/nginx/html/apps apps
+docker cp apps kazoo.kazoo:/home/user
+rm -rf apps
+cd kazoo
+./sup crossbar_maintenance init_apps /home/user/apps http://kazoo.kazoo:8000/v2
+```
+
+
 TODO
 ====
 
