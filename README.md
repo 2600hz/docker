@@ -30,7 +30,7 @@ in turn, need to access http://kazoo.kazoo:8000, and you probably want to run UI
 After start
 ===========
 
-To initialize the system after clean start (with empty database) there is init.sh script that:
+To initialize the system after clean start (with empty database) there is after-start.sh script that:
 
 1. Creates a master account admin with password admin
 2. Adds freeswitch node to Kazoo
@@ -147,5 +147,4 @@ TODO
 
 * Parametrize on network/domain (kazoo now)
 * Prepare production images (binary only, without build infrastructure)
-* Kazoo and Monster-UI should rebuild themselves on commits
 * Inter-container file exchange for sup (monster-ui apps, kazoo-sounds)
