@@ -1,27 +1,23 @@
-Kazoo components as docker images
-=================================
+Kazoo as docker containers
+==========================
 
 Goal
 ====
 
 To have all Kazoo components as independent docker containers. Containers are buildable
-from scratch (source code repo), and rebuildable to allow quick development of various components:
-
-1. edit source code
-2. commit
-3. rebuild and re-run container on commit
+from scratch using source code repositories only.
 
 Notes
 =====
 
-* All components depends on base-os image (Debian:Jessie with Erlang 17 preinstalled)
+* All components depends on base-os image (Debian:Jessie with Erlang 18 preinstalled)
 * BigCouch is replaced by CouchDB 2.0
-* All images are not optimized by size (however it should be possible)
+* All images are not optimized by size (however it is possible to combine)
 
 Init
 ====
 
-```
+```sh
 build.sh
 run.sh
 hosts.sh >> /etc/hosts
@@ -31,9 +27,22 @@ admin.sh gives access to the host inside the kazoo network.
 You need hosts file to access ui by http://kazoo-ui.kazoo and http://monster-ui.kazoo, and they,
 in turn, need to access http://kazoo.kazoo:8000, and you probably want to run UI on your host.
 
+After start
+===========
+
+To initialize the system after clean start (with empty database) there is init.sh script that:
+
+1. Creates a master account admin with password admin
+2. Adds freeswitch node to Kazoo
+3. Registers sound prompts
+4. Registers Monster-UI 'apps'
+
+In order to make it work you need to wait some time after Kazoo container starts (while it creates databases).
+
 Kazoo builds
 ============
-```
+
+```sh
 cd kazoo
 ./build.sh [REPO]
 ```
@@ -46,15 +55,17 @@ utilizing the docker caching ability.
 
 Kazoo Erlang console
 ====================
-```
+
+```sh
 docker exec -ti kazoo.kazoo ./run.sh remote_console
 # or
 cd kazoo ; ./console
-
 ```
+
 Kazoo sup
 =========
-```
+
+```sh
 cd kazoo
 
 # Running apps
@@ -114,9 +125,7 @@ How to register Monster-UI apps.
 2. You need to copy apps from monster-ui to kazoo
 3. You need to 'register' these apps
 
-
-
-```
+```sh
 docker cp monster-ui.kazoo:/usr/share/nginx/html/apps apps
 docker cp apps kazoo.kazoo:/home/user
 rm -rf apps
@@ -124,18 +133,14 @@ cd kazoo
 ./sup crossbar_maintenance init_apps /home/user/apps http://kazoo.kazoo:8000/v2
 ```
 
-Init script
+Development
 ===========
 
-To initialize the system after clean start (with empty database) there is init.sh script that:
+Intended workflow:
 
-1. Creates a master account admin with password admin
-2. Adds freeswitch node to Kazoo
-3. Registers sound prompts
-4. Registers Monster-UI 'apps'
-
-In order to make it work you need to wait some time after Kazoo container starts (while it creates databases).
-
+1. edit source code
+2. commit
+3. rebuild and re-run container on commit (either locally or remotely)
 
 TODO
 ====
