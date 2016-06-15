@@ -124,6 +124,18 @@ cd kazoo
 ./sup crossbar_maintenance init_apps /home/user/apps http://kazoo.kazoo:8000/v2
 ```
 
+Init script
+===========
+
+To initialize the system after clean start (with empty database) there is init.sh script that:
+
+1. Creates a master account admin with password admin
+2. Adds freeswitch node to Kazoo
+3. Registers sound prompts
+4. Registers Monster-UI 'apps'
+
+In order to make it work you need to wait some time after Kazoo container starts (while it creates databases).
+
 
 TODO
 ====
