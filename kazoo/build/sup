@@ -21,4 +21,4 @@ RELX_REPLACE_OS_VARS=true KZname="-name $KAZOO_NODE" \
    -n $NAME \
    -h $HOST \
    -c change_me \
-   -t 10 "$*"
+   -t 60 "$*"

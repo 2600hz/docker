@@ -19,10 +19,6 @@ WORKDIR /home/user
 COPY build build
 COPY etc/profile .bashrc
 
-RUN chown user:user .bashrc \
-	&& su -l -c build/setup-erlang.sh user \
-	&& su -l -c build/setup-bin.sh user \
-	&& su -l -c build/cleanup.sh user \
-	&& rm -rf build
+RUN chown user:user .bashrc
 
 USER user
