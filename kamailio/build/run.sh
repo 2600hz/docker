@@ -9,4 +9,4 @@ export GROUP=kamailio
 exec /usr/local/sbin/kamailio -E -DD \
         -P /run/kamailio/kamailio.pid \
         -f /etc/kamailio/kamailio.cfg \
-        -m $SHM_MEMORY -M $PKG_MEMORY -u $USER -g $GROUP | sed G
+        -m $SHM_MEMORY -M $PKG_MEMORY -u $USER -g $GROUP

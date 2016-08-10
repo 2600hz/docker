@@ -13,11 +13,14 @@ RUN build/setup-os.sh
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
 
+COPY etc etc
+COPY build/setup-private.sh build/setup-private.sh
+RUN build/setup-private.sh
+
 COPY etc/commit /root/commit
 COPY build/build.sh build/build.sh
 RUN build/build.sh
 
-COPY etc etc
 COPY build/run.sh build/run.sh
 ENTRYPOINT "build/run.sh"
 

@@ -17,3 +17,5 @@ cd ../monster-ui
 ./build.sh
 cd ../kazoo-ui
 ./build.sh
+cd ../carrier-sink
+./build.sh

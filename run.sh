@@ -7,3 +7,4 @@ freeswitch/run.sh
 kazoo/run.sh
 monster-ui/run.sh
 kazoo-ui/run.sh
+carrier-sink/run.sh
