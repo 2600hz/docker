@@ -7,6 +7,7 @@
         <param name="cookie" value="change_me" />-->
         <param name="shortname" value="false" />
         <param name="nodename" value="freeswitch" />
+        <param name="send-all-headers" value="true"/>
         <!--<param name="kazoo-var-prefix" value="ecallmgr" />-->
         <!--<param name="compat-rel" value="12"/> -->
     </settings>
