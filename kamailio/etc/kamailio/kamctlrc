@@ -1,7 +1,7 @@
-ETCDIR=/etc/kazoo/kamailio
+ETCDIR=/etc/kazoo/kazoo/kamailio
 DBENGINE=DBTEXT
-DB_PATH="/etc/kamailio/dbtext"
-DBTEXT_PATH="/etc/kamailio/dbtext"
+DB_PATH="/etc/kazoo/kamailio/dbtext"
+DBTEXT_PATH="/etc/kazoo/kamailio/dbtext"
 INSTALL_EXTRA_TABLES=yes
 INSTALL_PRESENCE_TABLES=yes
 INSTALL_DBUID_TABLES=yes
