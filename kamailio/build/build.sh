@@ -7,6 +7,9 @@ cd ../libnsq
 make
 make install
 
-cd ../kamailio
+cd ../
+cp libnsq/utlist.h /usr/local/include/
+
+cd ./kamailio
 make
 make install
