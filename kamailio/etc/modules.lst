@@ -20,3 +20,4 @@ modules_all= $(filter-out modules/CVS,$(wildcard modules/*))
 modules_noinc= $(filter-out $(addprefix modules/, $(exclude_modules) $(static_modules)), $(modules_all))
 modules= $(filter-out $(modules_noinc), $(addprefix modules/, $(include_modules) )) $(modules_noinc)
 modules_configured:=1
+
