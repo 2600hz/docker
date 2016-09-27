@@ -1,5 +1,5 @@
 #!/bin/sh
 
-cp etc/config-monster-ui.js $WWW/html/js/config.js
-
-nginx -g "daemon off;"
+cp etc/config-monster-ui.js $WWW/html/src/js/config.js
+cd $WWW/html
+gulp

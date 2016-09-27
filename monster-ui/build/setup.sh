@@ -4,8 +4,13 @@ mkdir -p $WWW/html
 cd $WWW
 git clone --depth 1 --no-single-branch $REPO html
 
+echo "Setup node"
+cd $WWW/html
+npm install
+npm -g install gulp
+
 echo "Setup public apps"
-cd $WWW/html/apps
+cd $WWW/html/src/apps
 
 for app in accounts callflows numbers pbxs voip webhooks
 do

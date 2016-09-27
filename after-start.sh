@@ -6,7 +6,7 @@ cd kazoo
 ./sup ecallmgr_maintenance add_fs_node freeswitch@freeswitch.kazoo
 ./sup kazoo_media_maintenance import_prompts /home/user/kazoo-sounds/kazoo-core/en/us en-us
 
-docker cp monster-ui.kazoo:/usr/share/nginx/html/apps apps
+docker cp monster-ui.kazoo:/usr/share/nginx/html/src/apps apps
 docker cp apps kazoo.kazoo:/home/user
 rm -rf apps
 
