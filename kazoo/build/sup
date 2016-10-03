@@ -19,6 +19,5 @@ cd kazoo
 RELX_REPLACE_OS_VARS=true KZname="-name $KAZOO_NODE" \
    _rel/kazoo/bin/kazoo escript lib/sup-*/priv/sup.escript \
    -n $NAME \
-   -h $HOST \
    -c change_me \
    -t 60 "$*"
