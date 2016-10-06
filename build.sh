@@ -1,6 +1,8 @@
 #!/bin/sh
 cd base-os
 ./build.sh
+cd ../kazoo-erlang
+./build.sh
 cd ../admin
 ./build.sh
 cd ../rabbitmq

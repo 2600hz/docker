@@ -1,11 +1,11 @@
 #!/bin/sh
+REPO=https://github.com/2600hz/kazoo.git
 if [ "$1" = "" ]
 then
-	REPO=https://github.com/2600hz/kazoo.git
+	COMMIT=$(../bin/get-commit $REPO)
 else
-	REPO=$1
+	COMMIT=$1
 fi
-echo Using repository $REPO
-../bin/get-commit $REPO > etc/commit
-echo Using repository $REPO commit: `cat etc/commit`
+echo $COMMIT > etc/commit
+echo Using repository $REPO commit: $COMMIT
 docker build -t kazoo/kazoo --build-arg REPO=$REPO .

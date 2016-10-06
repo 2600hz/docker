@@ -2,7 +2,7 @@
 echo Init the system
 
 cd kazoo
-./sup crossbar_maintenance create_account admin kamailio.kazoo admin admin
+#./sup crossbar_maintenance create_account admin kamailio.kazoo admin admin
 ./sup ecallmgr_maintenance add_fs_node freeswitch@freeswitch.kazoo
 ./sup kazoo_media_maintenance import_prompts /home/user/kazoo-sounds/kazoo-core/en/us en-us
 
