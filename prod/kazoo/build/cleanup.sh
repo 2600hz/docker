@@ -7,6 +7,5 @@ mv _rel kazoo
 rm -rf .kerl
 rm -rf kerl
 rm -rf /root/build
-apt-get purge -y python build-essential unixodbc-dev libssh2-1-dev libssl-dev libncurses5-dev 
+apt-get purge -y python build-essential unixodbc-dev libssh2-1-dev libssl-dev libncurses5-dev git perl
 apt-get autoremove -y
-apt-get clean
