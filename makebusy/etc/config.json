@@ -1,0 +1,31 @@
+{
+  "sip" : {
+      "targets" : [
+          "kamailio.kazoo"
+      ],
+      "profiles" : {
+          "auth": "AUTH_IP",
+          "pbx": "PBX_IP",
+          "carrier": "CARRIER_IP"
+      }
+  },
+  "webhooks" : {
+     "uri" : "http://127.0.0.1/make-busy/webhook.php"
+  },
+  "sdk" : {
+      "base_url" : "http://kazoo.kazoo:8000",
+      "api_key"  : "",
+      "auth_username" : "admin",
+      "auth_password" : "admin",
+      "auth_realm" : "admin"
+  },
+  "esl" : {
+        "ip_address" : "127.0.0.1",
+        "port" : "8021",
+        "auth_key" : "ClueCon"
+  },
+  "media" : {
+            "welcome_prompt_path" : ""
+  }
+}
+
