@@ -145,6 +145,5 @@ Intended workflow:
 TODO
 ====
 
-* Parametrize on network/domain (kazoo now)
 * Prepare production images (binary only, without build infrastructure)
 * Inter-container file exchange for sup (monster-ui apps, kazoo-sounds)
