@@ -1,10 +1,7 @@
 #!/bin/sh
-FLAGS=$1
-if [ "$FLAGS" = "" ]
-then
-	FLAGS=-td
-fi
-NAME=kazoo-ui.kazoo
+FLAGS=${1:-"-td"}
+NETWORK=${NETWORK:-"kazoo"}
+NAME=kazoo-ui.$NETWORK
 docker stop $NAME
 docker rm $NAME
-docker run $FLAGS --net kazoo -h $NAME --name $NAME kazoo/kazoo-ui
+docker run $FLAGS --net $NETWORK -h $NAME --name $NAME kazoo/kazoo-ui
