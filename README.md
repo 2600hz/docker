@@ -133,6 +133,19 @@ cd kazoo
 ./sup crossbar_maintenance init_apps /home/user/apps http://kazoo.kazoo:8000/v2
 ```
 
+Clustering
+==========
+
+You can setup a Kazoo cluster, please see cluster folder. Here is how:
+```sh
+cd cluster
+./run.sh
+```
+The setup comprises 3 networks: kazoo, zone1 and zone2. Hosts from zone1 and zone2 can communicate to network kazoo only.
+In zone1 and zone2 there are kazoo instance and freeswitch instance, and in kazoo network there are monster-ui, rabbitmq, couchdb
+and kamailio hosts.
+
+
 Development
 ===========
 
