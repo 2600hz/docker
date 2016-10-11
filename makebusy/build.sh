@@ -1,3 +1,4 @@
 #!/bin/sh
+FLAGS=${1:-""}
 cp -a ~/.ssh etc/
-docker build -t kazoo/makebusy .
+docker build $FLAGS -t kazoo/makebusy .
