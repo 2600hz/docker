@@ -4,4 +4,4 @@ NETWORK=${NETWORK:-"kazoo"}
 NAME=carrier-sink.$NETWORK
 docker stop $NAME
 docker rm $NAME
-docker run $FLAGS --net $NETWROK -h $NAME --name $NAME kazoo/carrier-sink
+docker run $FLAGS --net $NETWORK -h $NAME --name $NAME kazoo/carrier-sink
