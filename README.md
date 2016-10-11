@@ -27,6 +27,8 @@ admin.sh gives access to the host inside the kazoo network.
 You need hosts file to access ui by http://kazoo-ui.kazoo and http://monster-ui.kazoo, and they,
 in turn, need to access http://kazoo.kazoo:8000, and you probably want to run UI on your host.
 
+Please note each container run.sh and build.sh should be run inside their respective folders.
+
 After start
 ===========
 
@@ -136,15 +138,17 @@ cd kazoo
 Clustering
 ==========
 
-You can setup a Kazoo cluster, please see cluster folder. Here is how:
+You can setup a Kazoo cluster, please see [cluster](cluster) folder. Here is how:
 ```sh
 cd cluster
 ./run.sh
+./after-start.sh
 ```
 The setup comprises 3 networks: kazoo, zone1 and zone2. Hosts from zone1 and zone2 can communicate to network kazoo only.
 In zone1 and zone2 there are kazoo instance and freeswitch instance, and in kazoo network there are monster-ui, rabbitmq, couchdb
 and kamailio hosts.
 
+You should run after-start.sh only after kazoo finishes database update.
 
 Development
 ===========
