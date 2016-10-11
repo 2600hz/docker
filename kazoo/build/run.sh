@@ -14,9 +14,10 @@ fi
 CMD=$1
 if [ "$CMD" = "" ]
 then
+   export KAZOO_APPS=sysconf,blackhole,callflow,cdr,conference,crossbar,fax,hangups,media_mgr,milliwatt,omnipresence,pivot,registrar,reorder,stepswitch,teletype,trunkstore,webhooks,ecallmgr
    CMD=console
 else
-	shift
+   shift
 fi
 
 export RELX_REPLACE_OS_VARS=true
