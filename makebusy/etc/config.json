@@ -16,6 +16,7 @@
 
   "sip" : {
             "targets" : [
+                         "kamailio.kazoo"
                         ],
             "profiles" : {
                             "auth": "AUTH_IP",
