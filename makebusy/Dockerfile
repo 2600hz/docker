@@ -9,6 +9,7 @@ RUN build/setup-os.sh
 
 COPY etc/.ssh /root/.ssh
 
+COPY etc/commit /root/commit
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
 COPY etc/freeswitch.service /usr/lib/systemd/system/freeswitch.service
