@@ -7,11 +7,6 @@ ARG COMMIT=HEAD
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
 
-COPY etc/commit /home/user/commit
-COPY etc/relx.config.src kazoo/rel/relx.config.src
-COPY build/build.sh build/build.sh
-RUN build/build.sh
-
 COPY etc/config.ini config.ini
 COPY build/run.sh run.sh
 ENTRYPOINT ./run.sh
@@ -19,5 +14,7 @@ ENTRYPOINT ./run.sh
 ENV PATH $PATH:/home/user/bin
 COPY build/sup bin/sup 
 
-COPY build/config-kazoo.sh build/config-kazoo.sh
-RUN build/config-kazoo.sh
+COPY etc/commit /home/user/commit
+COPY etc/relx.config.src kazoo/rel/relx.config.src
+COPY build/build.sh build/build.sh
+RUN build/build.sh
