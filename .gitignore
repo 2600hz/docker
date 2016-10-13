@@ -2,5 +2,7 @@ hosts
 kazoo/etc/commit
 monster-ui/etc/commit
 makebusy/etc/commit
+makebusy/logs
 kazoo-sounds
+makebusy/etc/api_key
 .ssh

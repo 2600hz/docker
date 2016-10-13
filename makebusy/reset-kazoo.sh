@@ -1,5 +1,5 @@
 #!/bin/sh
-docker stop kazoo.kazoo
+cd ../kazoo
+./run.sh
 cd ../couchdb
 ./run-init.sh
-docker start kazoo.kazoo

@@ -23,9 +23,11 @@ sed -i "s|\"rtp-ip\" value=\".*\"|\"rtp-ip\" value=\"$CARRIER_IP_ADDRESS\"|" /et
 sed -i "s|\"ext-rtp-ip\" value=\".*\"|\"ext-rtp-ip\" value=\"$CARRIER_IP_ADDRESS\"|" /etc/freeswitch/sip_profiles/carrier.xml
 
 cp etc/config.json ./
+API_KEY=$(cat api_key)
 sed -i "s|AUTH_IP|$AUTH_IP_ADDRESS|" config.json
 sed -i "s|PBX_IP|$PBX_IP_ADDRESS|" config.json
 sed -i "s|CARRIER_IP|$CARRIER_IP_ADDRESS|" config.json
+sed -i "s|API_KEY|$API_KEY|" config.json
 cp config.json /var/www/html/make-busy
 
 systemctl restart freeswitch &
