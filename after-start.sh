@@ -16,5 +16,7 @@ rm -rf apps
 ./sup crossbar_maintenance init_apps /home/user/apps http://kazoo.kazoo:8000/v2
 docker exec -ti kazoo.kazoo rm -rf apps
 
-
 docker exec -ti kamailio.kazoo kamctl dispatcher reload 
+
+# save it for future use (e.g. clear things)
+docker commit couchdb.kazoo kazoo/couchdb-init

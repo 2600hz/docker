@@ -1,0 +1,12 @@
+#!/bin/sh
+cd kazoo
+mkdir mk-bs
+docker cp makebusy.kazoo:/var/www/html/make-busy/prompts/make-busy-media.tar.gz mk-bs/
+cd mk-bs
+tar zxvf make-busy-media.tar.gz
+cd ../
+docker cp mk-bs kazoo.kazoo:/home/user
+./sup kazoo_media_maintenance import_prompts /home/user/mk-bs mk-bs
+rm -rf mk-bs
+docker exec kazoo.kazoo rm -rf mk-bs
+
