@@ -1,10 +1,5 @@
 #!/bin/sh
-if [ "$1" = "" ]
-then
-	REPO=https://github.com/2600hz/monster-ui.git
-else
-	REPO=$1
-fi
+REPO=${1:-"https://github.com/2600hz/monster-ui.git"}
 cp -a ~/.ssh etc/
 echo Using repository $REPO
 ../bin/get-commit $REPO > etc/commit

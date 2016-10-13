@@ -1,9 +1,5 @@
 #!/bin/sh
-FLAGS=$1
-if [ "$FLAGS" = "" ]
-then
-	FLAGS=-td
-fi
+FLAGS=${1:-"-td"}
 NAME=makebusy.kazoo
 docker stop $NAME
 docker rm $NAME
