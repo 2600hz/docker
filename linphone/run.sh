@@ -1,8 +1,6 @@
 #!/bin/sh
-ID=$1
-TARGET=$2
-: ${ID:=1}
-: ${TARGET:=cc1.kazoo}
+ID=${1:="1"}
+TARGET=${2:-"cc1.kazoo"}
 KAMAILIO_IP=`../bin/get-ip kamailio.kazoo`
 echo Linphone $ID for $TARGET as $KAMAILIO_IP
 NAME=linphone$ID.kazoo
