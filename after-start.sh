@@ -8,13 +8,13 @@ cd kazoo
 git clone --depth 1 --no-single-branch https://github.com/2600hz/kazoo-sounds
 docker cp kazoo-sounds/kazoo-core/en/us kazoo.kazoo:/home/user
 ./sup kazoo_media_maintenance import_prompts /home/user/us en-us
-docker exec -ti kazoo.kazoo rm -rf us
+docker exec -ti --user root kazoo.kazoo rm -rf us
 
 docker cp monster-ui.kazoo:/usr/share/nginx/html/src/apps apps
 docker cp apps kazoo.kazoo:/home/user
 rm -rf apps
 ./sup crossbar_maintenance init_apps /home/user/apps http://kazoo.kazoo:8000/v2
-docker exec -ti kazoo.kazoo rm -rf apps
+docker exec -ti --user root kazoo.kazoo rm -rf apps
 
 docker exec -ti kamailio.kazoo kamctl dispatcher reload 
 
