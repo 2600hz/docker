@@ -34,7 +34,7 @@
             "api_key"  : "API_KEY",
             "auth_username" : "admin",
             "auth_password" : "admin",
-            "auth_realm" : "admin"
+            "auth_realm" : "kamailio.kazoo"
   },
 
   "esl" : {
@@ -44,7 +44,7 @@
           },
 
   "media" : {
-                "welcome_prompt_path" : ""
+                "welcome_prompt_path" : "/var/www/html/make-busy/prompts/prompts/welcome.wav"
             },
 
   "log" : {
