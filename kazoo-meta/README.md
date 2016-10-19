@@ -7,7 +7,7 @@ How to run
 ==========
 
 ```sh
-docker build -t kazoo/meta .
+docker build -t jamhed/kazoo/meta .
 docker run -v /var/run/docker.sock:/var/run/docker.sock --entrypoint ./build.sh -ti kazoo/meta
 docker run -v /var/run/docker.sock:/var/run/docker.sock --entrypoint ./run.sh -ti kazoo/meta
 ```
