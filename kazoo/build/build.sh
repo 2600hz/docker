@@ -4,4 +4,4 @@ COMMIT=$(cat /home/user/commit)
 cd kazoo
 git fetch
 git reset --hard $COMMIT
-make compile build-release
+make compile build-dev-release

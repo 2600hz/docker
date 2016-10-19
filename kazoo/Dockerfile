@@ -15,6 +15,5 @@ ENV PATH $PATH:/home/user/bin
 COPY build/sup bin/sup 
 
 COPY etc/commit /home/user/commit
-COPY etc/relx.config.src kazoo/rel/relx.config.src
 COPY build/build.sh build/build.sh
 RUN build/build.sh
