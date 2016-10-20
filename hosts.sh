@@ -7,3 +7,5 @@ echo `bin/get-ip freeswitch.kazoo` freeswitch.kazoo
 echo `bin/get-ip kamailio.kazoo` kamailio.kazoo
 echo `bin/get-ip couchdb.kazoo` couchdb.kazoo
 echo `bin/get-ip carrier-sink.kazoo` carrier-sink.kazoo
+echo `bin/get-ip makebusy.kazoo` makebusy.kazoo
+
