@@ -26,19 +26,18 @@
           },
 
   "webhooks" : {
-                    "uri" : "http://127.0.0.1/make-busy/webhook.php"
+                    "uri" : "http://makebusy.kazoo/make-busy/webhook.php"
                },
 
   "sdk" : {
             "base_url" : "http://kazoo.kazoo:8000",
-            "api_key"  : "API_KEY",
             "auth_username" : "admin",
             "auth_password" : "admin",
             "auth_realm" : "kamailio.kazoo"
   },
 
   "esl" : {
-            "ip_address" : "127.0.0.1",
+            "ip_address" : "makebusy-fs.kazoo",
             "port" : "8021",
             "auth_key" : "ClueCon"
           },

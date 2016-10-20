@@ -1,9 +1,9 @@
 #!/bin/sh
 FLAGS=${1:-"-td"}
-NAME=makebusy.kazoo
+NETWORK=${NETWORK:-"kazoo"}
+NAME=makebusy.$NETWORK
 docker stop $NAME
 docker rm $NAME
-docker run $FLAGS --privileged  -v /sys/fs/cgroup:/sys/fs/cgroup:ro --net kazoo -h $NAME --name $NAME kazoo/makebusy
-docker exec -ti $NAME build/run.sh
-docker exec -ti $NAME build/setup-ip.sh
-
+docker run $FLAGS --net $NETWORK -h $NAME --name $NAME kazoo/makebusy
+FS_IP=`../bin/get-ip makebusy-fs.$NETWORK`
+docker exec -ti $NAME build/setup-ip.sh $FS_IP
