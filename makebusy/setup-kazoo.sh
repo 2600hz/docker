@@ -6,4 +6,3 @@
 ./sup crossbar_init start_mod cb_system_configs
 ./sup kazoo_maintenance console_level debug
 ./sup kz_datamgr flush_cache_docs
-docker commit couchdb.kazoo kazoo/couchdb-init
