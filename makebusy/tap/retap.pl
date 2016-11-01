@@ -9,7 +9,7 @@ while(<>) {
 		$test =~ s/\\/\\\\/g;
 		print "failed: $1, repeating\n"; 
 		my $re = qx( docker exec -ti makebusy.kazoo ./run-test.sh \'--filter $test\' );
-		if ($re =~ /^not ok/) {
+		if ($re =~ /\bnot ok\b/s) {
 			$notgood = 1;
 			print $re, "\n";
 		}

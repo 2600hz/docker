@@ -8,4 +8,6 @@ docker cp mk-bs kazoo.kazoo:/home/user
 ./sup kazoo_media_maintenance import_prompts /home/user/mk-bs mk-bs
 rm -rf mk-bs
 docker exec --user root kazoo.kazoo rm -rf mk-bs
+echo wait data to flush
+sleep 5
 docker commit couchdb.kazoo kazoo/couchdb-init
