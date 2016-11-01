@@ -1,6 +1,8 @@
 #!/bin/sh
-echo Init the system
+echo 'Waiting for kazoo to start (you may check docker logs if impatient)'
+watch -g "docker logs kazoo.kazoo | grep 'auto-started kapps'" > /dev/null
 
+echo Init the system
 cd kazoo
 ./sup crossbar_maintenance create_account admin kamailio.kazoo admin admin
 ./sup ecallmgr_maintenance add_fs_node freeswitch@freeswitch.kazoo
