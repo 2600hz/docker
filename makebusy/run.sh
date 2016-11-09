@@ -5,4 +5,3 @@ NAME=makebusy.$NETWORK
 docker stop $NAME
 docker rm $NAME
 docker run $FLAGS --net $NETWORK -h $NAME --name $NAME kazoo/makebusy
-docker exec -ti $NAME build/setup-ip.sh
