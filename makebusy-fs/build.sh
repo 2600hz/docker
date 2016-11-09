@@ -1,3 +1,4 @@
 #!/bin/sh
-FLAGS=${1:-""}
+TYPE=${1:-"auth"}
+FLAGS=${2:-""}
 docker build $FLAGS -t kazoo/makebusy-fs .

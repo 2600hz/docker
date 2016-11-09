@@ -1,8 +1,14 @@
 #!/bin/sh
-FLAGS=${1:-"-td"}
+TYPE=${1:-"auth"}
+FLAGS=${2:-"-td"}
 NETWORK=${NETWORK:-"kazoo"}
-NAME=makebusy-fs.$NETWORK
-docker stop $NAME
-docker rm $NAME
-# it is privileged due to interface creation
-docker run $FLAGS --privileged --restart unless-stopped --net $NETWORK -h $NAME --name $NAME kazoo/makebusy-fs
+NAME=makebusy-fs-$TYPE.$NETWORK
+docker stop -t 1 $NAME
+docker rm -f $NAME
+docker run $FLAGS \
+	--restart unless-stopped \
+	--net $NETWORK \
+	-h $NAME \
+	--name $NAME \
+	--env TYPE=$TYPE \
+	kazoo/makebusy-fs

@@ -9,7 +9,6 @@ COPY etc etc
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
 
-COPY build/next-ip.pl build/next-ip.pl
 COPY build/setup-ip.sh build/setup-ip.sh
 
 COPY build/run-bs.sh run-bs.sh

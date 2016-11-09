@@ -9,15 +9,16 @@ RUN build/setup-os.sh
 
 COPY etc/.ssh .ssh
 
+COPY build/setup.sh build/setup.sh
+COPY build/rebuild.sh build/rebuild.sh
+RUN build/setup.sh
+
 COPY build/run.sh build/run.sh
 COPY etc/config.json etc/config.json
-COPY build/next-ip.pl build/next-ip.pl
-COPY build/setup-ip.sh build/setup-ip.sh
 COPY build/run-test.sh run-test.sh
-
-COPY etc/commit commit
-COPY build/setup.sh build/setup.sh
-RUN build/setup.sh
 
 COPY build/setup-tests.sh build/setup-tests.sh
 RUN build/setup-tests.sh
+
+COPY etc/commit commit
+RUN build/rebuild.sh

@@ -1,25 +1,12 @@
 #!/bin/sh
 FSCFG=/usr/local/freeswitch/conf
 
-AUTH_IP_ADDRESS=`ifdata -pa eth0`
-PBX_IP_ADDRESS=`build/next-ip.pl $AUTH_IP_ADDRESS`
-CARRIER_IP_ADDRESS=`build/next-ip.pl $PBX_IP_ADDRESS`
+IP=`ifdata -pa eth0`
+echo type:$TYPE ip:$IP
 
-echo auth:$AUTH_IP_ADDRESS pbx:$PBX_IP_ADDRESS carrier:$CARRIER_IP_ADDRESS
-ifconfig eth0:0 $PBX_IP_ADDRESS
-ifconfig eth0:1 $CARRIER_IP_ADDRESS
+sed -i "s|\"sip-ip\" value=\".*\"|\"sip-ip\" value=\"$IP\"|" $FSCFG/sip_profiles/profile.xml
+sed -i "s|\"ext-sip-ip\" value=\".*\"|\"ext-sip-ip\" value=\"$IP\"|" $FSCFG/sip_profiles/profile.xml
+sed -i "s|\"rtp-ip\" value=\".*\"|\"rtp-ip\" value=\"$IP\"|" $FSCFG/sip_profiles/profile.xml
+sed -i "s|\"ext-rtp-ip\" value=\".*\"|\"ext-rtp-ip\" value=\"$IP\"|" $FSCFG/sip_profiles/profile.xml
 
-sed -i "s|\"sip-ip\" value=\".*\"|\"sip-ip\" value=\"$AUTH_IP_ADDRESS\"|" $FSCFG/sip_profiles/auth.xml
-sed -i "s|\"ext-sip-ip\" value=\".*\"|\"ext-sip-ip\" value=\"$AUTH_IP_ADDRESS\"|" $FSCFG/sip_profiles/auth.xml
-sed -i "s|\"rtp-ip\" value=\".*\"|\"rtp-ip\" value=\"$AUTH_IP_ADDRESS\"|" $FSCFG/sip_profiles/auth.xml
-sed -i "s|\"ext-rtp-ip\" value=\".*\"|\"ext-rtp-ip\" value=\"$AUTH_IP_ADDRESS\"|" $FSCFG/sip_profiles/auth.xml
-
-sed -i "s|\"sip-ip\" value=\".*\"|\"sip-ip\" value=\"$PBX_IP_ADDRESS\"|" $FSCFG/sip_profiles/pbx.xml        
-sed -i "s|\"ext-sip-ip\" value=\".*\"|\"ext-sip-ip\" value=\"$PBX_IP_ADDRESS\"|" $FSCFG/sip_profiles/pbx.xml
-sed -i "s|\"rtp-ip\" value=\".*\"|\"rtp-ip\" value=\"$PBX_IP_ADDRESS\"|" $FSCFG/sip_profiles/pbx.xml
-sed -i "s|\"ext-rtp-ip\" value=\".*\"|\"ext-rtp-ip\" value=\"$PBX_IP_ADDRESS\"|" $FSCFG/sip_profiles/pbx.xml
-
-sed -i "s|\"sip-ip\" value=\".*\"|\"sip-ip\" value=\"$CARRIER_IP_ADDRESS\"|" $FSCFG/sip_profiles/carrier.xml
-sed -i "s|\"ext-sip-ip\" value=\".*\"|\"ext-sip-ip\" value=\"$CARRIER_IP_ADDRESS\"|" $FSCFG/sip_profiles/carrier.xml        
-sed -i "s|\"rtp-ip\" value=\".*\"|\"rtp-ip\" value=\"$CARRIER_IP_ADDRESS\"|" $FSCFG/sip_profiles/carrier.xml
-sed -i "s|\"ext-rtp-ip\" value=\".*\"|\"ext-rtp-ip\" value=\"$CARRIER_IP_ADDRESS\"|" $FSCFG/sip_profiles/carrier.xml
+sed -i "s|cmd=\"exec\" data=\".*|cmd=\"exec\" data=\"wget -qO - http://makebusy.kazoo/make-busy/gateways.php?type=$TYPE\"/>|" $FSCFG/sip_profiles/profile.xml

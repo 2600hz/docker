@@ -1,7 +1,7 @@
 #!/bin/sh
-docker stop monster-ui.kazoo
-docker stop kazoo.kazoo
-docker stop freeswitch.kazoo
-docker stop kamailio.kazoo
-docker stop couchdb.kazoo
-docker stop rabbitmq.kazoo
+docker stop -t 1 monster-ui.kazoo
+docker stop -t 1 kazoo.kazoo
+docker stop -t 1 freeswitch.kazoo
+docker stop -t 1 kamailio.kazoo
+docker stop -t 1 couchdb.kazoo
+docker stop -t 1 rabbitmq.kazoo

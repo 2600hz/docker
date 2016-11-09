@@ -1,60 +1,67 @@
 {
-  "ssh" : {
-            "targets": [
-                        {
-                            "host": "",
-                            "port": "",
-                            "username": "",
-                            "password": "",
-                            "logs": [
-                                            {"kazoo": "/var/log/freeswitch/kazoo-debug.log-????????"},
-                                            {"journal": "journalctl --no-pager -u sshd"}
-                                    ]
-                        }
-                       ]
-          },
 
-  "sip" : {
-            "targets" : [
-                         "kamailio.kazoo"
-                        ],
-            "profiles" : {
-                            "auth": "AUTH_IP",
-                            "pbx": "PBX_IP",
-                            "carrier": "CARRIER_IP"
-                         }
-          },
+"ssh": {
+    "targets": [{
+        "host": "",
+        "port": "",
+        "username": "",
+        "password": "",
+        "logs": [
+            {"kazoo": "/var/log/freeswitch/kazoo-debug.log-????????"},
+            {"journal": "journalctl --no-pager -u sshd"}
+        ]
+    }]
+},
 
-  "webhooks" : {
-                    "uri" : "http://makebusy.kazoo/make-busy/webhook.php"
-               },
+"sip": {
+    "targets": [
+        "kamailio.kazoo"
+    ]
+},
 
-  "sdk" : {
-            "base_url" : "http://kazoo.kazoo:8000",
-            "auth_username" : "admin",
-            "auth_password" : "admin",
-            "auth_realm" : "kamailio.kazoo"
-  },
+"webhooks": {
+    "uri": "http://makebusy.kazoo/make-busy/webhook.php"
+},
 
-  "esl" : {
-            "ip_address" : "makebusy-fs.kazoo",
-            "port" : "8021",
-            "auth_key" : "ClueCon"
-          },
+"sdk": {
+    "base_url": "http://kazoo.kazoo:8000",
+    "auth_username": "admin",
+    "auth_password": "admin",
+    "auth_realm": "kamailio.kazoo"
+},
 
-  "media" : {
-                "welcome_prompt_path" : "/var/www/html/make-busy/prompts/prompts/welcome.wav"
-            },
+"esl": {
+    "auth": {
+        "ip_address": "makebusy-fs-auth.kazoo",
+        "port": "8021",
+        "auth_key": "ClueCon"
+    },
+    "carrier": {
+        "ip_address": "makebusy-fs-carrier.kazoo",
+        "port": "8021",
+        "auth_key": "ClueCon"
+    },
+    "pbx": {
+        "ip_address": "makebusy-fs-pbx.kazoo",
+        "port": "8021",
+        "auth_key": "ClueCon"
+    }
+},
 
-  "log" : {
-            "log_type": "file",
-            "log_file": "/tmp/makebusy.log",
-            "log_name": "php-shared",
-            "log_stream": 128,
-            "email": {
-                        "from_address": "app@{{hostname}}",
-                        "to_address": "",
-                        "subject": ""
-                     }
-          }
+"media": {
+    "welcome_prompt_path": "/var/www/html/make-busy/prompts/prompts/welcome.wav"
+},
+
+"log": {
+    "log_type": "file",
+    "log_file": "/tmp/makebusy.log",
+    "log_name": "php-shared",
+    "log_stream": 128,
+    "email": {
+        "from_address": "app@{{hostname}}",
+        "to_address": "",
+        "subject": ""
+    }
+}
+
 }
