@@ -14,11 +14,16 @@ COPY build/rebuild.sh build/rebuild.sh
 RUN build/setup.sh
 
 COPY build/run.sh build/run.sh
-COPY etc/config.json etc/config.json
 COPY build/run-test.sh run-test.sh
+
+COPY etc/config.json etc/config.json
+COPY build/setup-bs.sh build/setup-bs.sh
+RUN build/setup-bs.sh
 
 COPY build/setup-tests.sh build/setup-tests.sh
 RUN build/setup-tests.sh
+
+COPY etc/.vimrc /root
 
 COPY etc/commit commit
 RUN build/rebuild.sh

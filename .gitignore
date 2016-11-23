@@ -6,3 +6,4 @@ makebusy/logs
 kazoo-sounds
 makebusy/etc/api_key
 .ssh
+export/freeswitch/freeswitch

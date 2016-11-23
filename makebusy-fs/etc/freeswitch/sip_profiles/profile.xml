@@ -187,13 +187,13 @@
 
             <!-- Logging / Events -->
             <param name="debug" value="info"/>
-            <param name="sip-trace" value="true"/>
+            <param name="sip-trace" value="false"/>
             <param name="log-auth-failures" value="true"/>
             <param name="fire-transfer-events" value="true"/>
             <param name="channel-xml-fetch-on-nightmare-transfer" value="true"/>
         </settings>
         <gateways>
-            <X-PRE-PROCESS cmd="exec" data="wget -qO - http://makebusy.kazoo/make-busy/auth-gateways.php" />
+            <X-PRE-PROCESS cmd="exec" data="wget -qO - http://makebusy.kazoo/make-busy/gateways.php" />
         </gateways>
     </profile>
 </include>
