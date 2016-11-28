@@ -6,9 +6,9 @@
 4. Github PR integration (on each PR run test suite and report results back, probably on the same server from p.1)
 5. Public MakeBusy Callflow repository (to reference examples)
 6. A dedicated page how to setup Kazoo cluster from Docker images, with examples:
-6.1. A basic setup in one Docker network, with external ip traffic forwarded to appropriate instances
-6.2. A basic setup with two Docker hosts interconnected
-6.3. Clustering setup (not so sure atm what it should be)
+	1. A basic setup in one Docker network, with external ip traffic forwarded to appropriate instances
+	2. A basic setup with two Docker hosts interconnected
+	3. Clustering setup (not so sure atm what it should be)
 
 # What I have already:
 
