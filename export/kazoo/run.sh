@@ -8,6 +8,7 @@ docker run $FLAGS \
 	--net $NETWORK \
 	-h $NAME \
 	--name $NAME \
+	--env NETWORK=kazoo \
 	--env COUCHDB=couchdb.$NETWORK \
 	--env RABBITMQ=rabbitmq.$NETWORK \
 	--env NODE_NAME=kazoo \
