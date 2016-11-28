@@ -13,11 +13,7 @@ USER root
 WORKDIR "/root"
 
 COPY etc/deps /root/deps
-RUN cp /usr/local/sbin/apt-clean /usr/bin && rm -rf /usr/local
-COPY kamailio/bin /usr/local
-COPY kamailio/etc /etc/kamailio
-COPY kamailio/run.sh /root/
-COPY kamailio/config-local.sh /root/
+ADD kamailio.tar /
 
 RUN groupadd kamailio \
 	&& useradd --home-dir /var/run/kamailio -g kamailio kamailio \

@@ -11,15 +11,14 @@ ENV APT_LISTCHANGES_FRONTEND=none
 COPY etc/deps /root/deps
 COPY etc/sources.list /etc/apt/sources.list
 COPY etc/freeswitch.key.gpg /root/freeswitch.key.gpg
-COPY freeswitch /usr/local/freeswitch
+ADD freeswitch.tar /usr/local/
 RUN groupadd freeswitch \
 	&& useradd --home-dir /usr/local/freeswitch -g freeswitch freeswitch \
 	&& cat /root/freeswitch.key.gpg | apt-key add - \
 	&& apt-get -y update \
 	&& apt-get -y install wget curl $(cat /root/deps) \
 	&& apt-get -y clean \
-	&& apt-clean --aggressive \
-	&& chown -R freeswitch:freeswitch /usr/local/freeswitch
+	&& apt-clean --aggressive
 
 USER freeswitch
 WORKDIR "/usr/local/freeswitch"
