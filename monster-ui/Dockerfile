@@ -5,6 +5,8 @@ USER root
 WORKDIR /root
 
 ARG REPO=https://github.com/2600hz/monster-ui.git 
+ARG COMMIT=HEAD
+
 ENV WWW=/usr/share/nginx
 
 COPY build/setup-os.sh build/setup-os.sh

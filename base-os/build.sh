@@ -1,2 +1,3 @@
 #!/bin/sh
-docker build $1 -t kazoo/base-os .
+NETWORK=${NETWORK:-"kazoo"}
+docker build $1 -t $NETWORK/base-os .
