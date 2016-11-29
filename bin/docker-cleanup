@@ -1,2 +1,3 @@
 #!/bin/sh
-docker images | grep none  | while read a b c d; do docker rmi --force $c; done
+docker rm (docker ps -a --filter status=dead -q)
+docker rmi $(docker images -a --filter=dangling=true -q)
