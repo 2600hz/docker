@@ -9,5 +9,5 @@ docker run $FLAGS \
 	-h $NAME \
 	--name $NAME \
 	--env NETWORK=$NETWORK \
-	--env KAZOO=kazoooo.$NETWORK \
+	--env KAZOO=kazoo.$NETWORK \
 	2600hz/monster-ui
