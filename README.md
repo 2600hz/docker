@@ -163,5 +163,5 @@ TODO
 ====
 
 * Add haproxy to setup (balance the load between two or more instances of kazoo)
-* Prepare production images (binary only, without build infrastructure)
 * Inter-container file exchange for sup (monster-ui apps, kazoo-sounds)
+* Parametrize FROM in Dockerfiles
