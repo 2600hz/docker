@@ -13,4 +13,4 @@ docker rm $(docker ps -a --filter status=exited -q)
 # run tests
 
 # export images
-export/all.sh
+export/all.sh daily
