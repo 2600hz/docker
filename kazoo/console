@@ -1,2 +1,3 @@
 #!/bin/sh
-docker exec -ti kazoo.kazoo ./run.sh remote_console
+NETWORK=${NETWORK:-"kazoo"}
+docker exec -ti kazoo.$NETWORK ./run.sh remote_console
