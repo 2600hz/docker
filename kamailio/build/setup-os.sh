@@ -6,4 +6,4 @@ apt-get -y install \
 	libjson-c-dev pkg-config  libevent-dev libev-dev \
 	uuid-dev libunistring-dev xsltproc \
 	python
-apt-get clean
+apt-get -y clean
