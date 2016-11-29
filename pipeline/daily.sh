@@ -13,6 +13,8 @@ docker rm $(docker ps -a --filter status=exited -q)
 # run daily segment
 ./run.sh daily
 
+./after-start.sh daily
+
 # run tests
 
 # export images
