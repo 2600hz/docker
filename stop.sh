@@ -1,7 +1,4 @@
 #!/bin/sh
-docker stop -t 1 monster-ui.kazoo
-docker stop -t 1 kazoo.kazoo
-docker stop -t 1 freeswitch.kazoo
-docker stop -t 1 kamailio.kazoo
-docker stop -t 1 couchdb.kazoo
-docker stop -t 1 rabbitmq.kazoo
+NETWORK=${1:-"kazoo"}
+echo Stopping network: $NETWORK
+docker stop -t 1 $(docker ps | grep "\.$NETWORK" | cut -d' ' -f1)
