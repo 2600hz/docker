@@ -1,4 +1,9 @@
 #!/bin/sh
+if [ ! -d etc/.ssh ] 
+then
+	echo skipping private repo
+	exit
+fi
 cp -a etc/.ssh /root/.ssh
 chown -R root:root ~/.ssh
 echo "Setup private apps"

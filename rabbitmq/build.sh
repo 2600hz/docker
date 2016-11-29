@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build -t kazoo/rabbitmq .
+docker build $1 -t kazoo/rabbitmq .

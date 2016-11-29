@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build -t kazoo/couchdb .
+docker build $1 -t kazoo/couchdb .

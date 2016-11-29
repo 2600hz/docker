@@ -1,11 +1,7 @@
 #!/bin/sh
-REPO=https://github.com/2600hz/kazoo.git
-if [ "$1" = "" ]
-then
-	COMMIT=$(../bin/get-commit $REPO)
-else
-	COMMIT=$1
-fi
+BUILD_ARG=${1:-""}
+REPO=${2:-"https://github.com/2600hz/kazoo.git"}
+COMMIT=${3:-"$(../bin/get-commit $REPO)"}
+echo Using repository $REPO commit $COMMIT
 echo $COMMIT > etc/commit
-echo Using repository $REPO commit: $COMMIT
-docker build -t kazoo/kazoo --build-arg REPO=$REPO .
+docker build $BUILD_ARG -t kazoo/kazoo --build-arg REPO=$REPO --build-arg COMMIT=$COMMIT .
