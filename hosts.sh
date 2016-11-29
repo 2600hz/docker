@@ -1,14 +1,15 @@
 #!/bin/sh
-echo `bin/get-ip monster-ui.kazoo` monster-ui.kazoo
-echo `bin/get-ip kazoo.kazoo` kazoo.kazoo
-echo `bin/get-ip rabbitmq.kazoo` rabbitmq.kazoo 
-echo `bin/get-ip freeswitch.kazoo` freeswitch.kazoo
-echo `bin/get-ip kamailio.kazoo` kamailio.kazoo
-echo `bin/get-ip couchdb.kazoo` couchdb.kazoo
-echo `bin/get-ip makebusy.kazoo` makebusy.kazoo
-echo `bin/get-ip makebusy-fs-auth.kazoo` makebusy-fs-auth.kazoo
-echo `bin/get-ip makebusy-fs-pbx.kazoo` makebusy-fs-pbx.kazoo
-echo `bin/get-ip makebusy-fs-carrier.kazoo` makebusy-fs-carrier.kazoo
+NETWORK=${1:-"kazoo"}
+echo `bin/get-ip monster-ui.$NETWORK` monster-ui.$NETWORK
+echo `bin/get-ip kazoo.$NETWORK` kazoo.$NETWORK
+echo `bin/get-ip rabbitmq.$NETWORK` rabbitmq.$NETWORK 
+echo `bin/get-ip freeswitch.$NETWORK` freeswitch.$NETWORK
+echo `bin/get-ip kamailio.$NETWORK` kamailio.$NETWORK
+echo `bin/get-ip couchdb.$NETWORK` couchdb.$NETWORK
+echo `bin/get-ip makebusy.$NETWORK` makebusy.$NETWORK
+echo `bin/get-ip makebusy-fs-auth.$NETWORK` makebusy-fs-auth.$NETWORK
+echo `bin/get-ip makebusy-fs-pbx.$NETWORK` makebusy-fs-pbx.$NETWORK
+echo `bin/get-ip makebusy-fs-carrier.$NETWORK` makebusy-fs-carrier.$NETWORK
 
 
 
