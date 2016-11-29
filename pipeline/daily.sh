@@ -1,4 +1,5 @@
 #!/bin/sh
+export NETWORK=${1:-"kazoo"}
 
 # stop daily segment
 ./stop.sh daily
@@ -13,7 +14,7 @@ docker rm $(docker ps -a --filter status=exited -q)
 # run daily segment
 ./run.sh daily
 
-./after-start.sh daily
+pipeline/after-start.sh
 
 # run tests
 

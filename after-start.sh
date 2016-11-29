@@ -1,5 +1,5 @@
 #!/bin/sh
-NETWORK=${1:-"kazoo"}
+NETWORK=${NETWORK:-"kazoo"}
 echo Waiting for kazoo.$NETWORK to start '(you may check docker logs if impatient)'
 watch -g "docker logs kazoo.$NETWORK | grep 'auto-started kapps'" > /dev/null
 
