@@ -4,10 +4,7 @@ then
    export KAZOO_CONFIG=$HOME/config.ini
 fi
 
-if [ "$KAZOO_NODE" = "" ]
-then
-   KAZOO_NODE=kazoo@$(hostname)
-fi
+KAZOO_NODE=${KAZOO_NODE:-"kazoo@$(hostname)"}
 
 IFS='@' read -r -a NH <<< "$KAZOO_NODE"
 NAME="${NH[0]}"
@@ -20,4 +17,4 @@ RELX_REPLACE_OS_VARS=true KZname="-name $KAZOO_NODE" \
    _rel/kazoo/bin/kazoo escript lib/sup-*/priv/sup.escript \
    -n $NAME \
    -c change_me \
-   -t 60 "$*"
+   -t 600 "$*"
