@@ -10,6 +10,4 @@ cp /etc/kamailio/local.cfg /etc/kamailio/local.cfg.orig
 
 rsync -av etc/kamailio/dbtext /etc/kamailio/
 
-kamctl dispatcher add 1 sip:freeswitch.kazoo:11000 0 1 ' ' ' '
-
 useradd -d /var/run/kamailio kamailio

@@ -3,6 +3,7 @@ MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 ENV NETWORK=kazoo
 ENV RABBITMQ=rabbitmq.$NETWORK
+ENV FREESWITCH=freeswitch.$NETWORK
 
 USER root
 WORKDIR /root

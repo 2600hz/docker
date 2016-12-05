@@ -9,7 +9,6 @@ ENV COUCHDB=couchdb.$NETWORK
 ENV RABBITMQ=rabbitmq.$NETWORK
 
 ARG REPO=https://github.com/2600hz/kazoo.git
-ARG COMMIT=HEAD
 
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
