@@ -11,15 +11,15 @@ cd kazoo
 git clone --depth 1 --no-single-branch https://github.com/2600hz/kazoo-sounds
 docker cp kazoo-sounds/kazoo-core/en/us kazoo.$NETWORK:/home/user
 ./sup kazoo_media_maintenance import_prompts /home/user/us en-us
-docker exec -ti --user root kazoo.$NETWORK rm -rf us
+docker exec -i --user root kazoo.$NETWORK rm -rf us
 
 docker cp monster-ui.$NETWORK:/usr/share/nginx/html/src/apps apps
 docker cp apps kazoo.$NETWORK:/home/user
 rm -rf apps
 ./sup crossbar_maintenance init_apps /home/user/apps http://kazoo.$NETWORK:8000/v2
-docker exec -ti --user root kazoo.$NETWORK rm -rf apps
+docker exec -i --user root kazoo.$NETWORK rm -rf apps
 
-docker exec -ti kamailio.$NETWORK kamctl dispatcher reload 
+docker exec -i kamailio.$NETWORK kamctl dispatcher reload 
 
 # save it for future use (e.g. clear things)
 docker commit couchdb.$NETWORK $NETWORK/couchdb-init
