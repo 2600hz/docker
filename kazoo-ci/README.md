@@ -1,15 +1,10 @@
 # Kazoo CI
 
+Continious integration server. Accepts Github webhooks and trigger commit-dependent build and test process.
+Reports test results back to Github, and provides test run files.
+
+# Build and test commit manually
 
 ```sh
-docker build -t jamhed/kazoo/meta .
-docker run -v /var/run/docker.sock:/var/run/docker.sock --entrypoint ./build.sh -ti kazoo/meta
-docker run -v /var/run/docker.sock:/var/run/docker.sock --entrypoint ./run.sh -ti kazoo/meta
+docker exec -ti kazoo-ci ./build.sh 73fde591d5
 ```
-
-How it works
-============
-
-The goal is to simplify build process for non-linux environments. The container needs to have access
-to the host Docker and will build and run images on the host.
-
