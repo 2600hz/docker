@@ -1,6 +1,6 @@
 #!/bin/sh
 NETWORK=${NETWORK:-"kazoo"}
-BUILD_ARG=${1:-""}
+BUILD_ARG=${1:-"-q"}
 REPO=${2:-"https://github.com/2600hz/kazoo.git"}
 COMMIT=${3:-"$(../bin/get-commit $REPO)"}
 echo Using repository $REPO commit $COMMIT
