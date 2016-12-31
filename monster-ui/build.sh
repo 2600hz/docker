@@ -4,9 +4,9 @@ BUILD_ARG=${1:-""}
 REPO=${2:-"https://github.com/2600hz/monster-ui.git"}
 COMMIT=${3:-"$(../bin/get-commit $REPO)"}
 rm -rf etc/.ssh
-if [ -d ~/.ssh ]
+if [ -d ../.ssh ]
 then
-	cp -a ~/.ssh etc/
+	cp -a ../.ssh etc/
 fi
 echo Using repository $REPO commit $COMMIT
 echo $COMMIT > etc/commit
