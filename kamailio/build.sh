@@ -1,3 +1,4 @@
 #!/bin/sh
 NETWORK=${NETWORK:-"kazoo"}
-docker build $1 -t $NETWORK/kamailio .
+COMMIT=${1:-"HEAD"}
+docker build --build-arg=COMMIT=$COMMIT -t $NETWORK/kamailio .
