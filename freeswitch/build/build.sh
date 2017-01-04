@@ -1,3 +1,3 @@
 #!/bin/sh
-cd freeswitch
+cd /usr/local/src/freeswitch
 make

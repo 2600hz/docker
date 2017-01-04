@@ -1,0 +1,117 @@
+#!/bin/sh
+cd /usr/local/src/kamailio
+
+EXCLUDE_MODULES="alias_db \
+corex \
+mi_rpc \
+auth_diameter \
+benchmark \
+blst \
+call_control \
+cfg_db \
+counters \
+db2_ops \
+db_cluster \
+db_flatstore \
+debugger \
+diversion \
+dmq \
+domainpolicy \
+domain \
+drouting \
+enum \
+exec \
+group \
+imc \
+malloc_test \
+mangler \
+matrix \
+mediaproxy \
+mi_datagram \
+mqueue \
+msilo \
+mtree \
+nat_traversal \
+pdb \
+pdt \
+pipelimit \
+prefix_route \
+print_lib \
+print \
+p_usrloc \
+rtimer \
+rtpproxy \
+sca \
+sdpops \
+seas \
+snmpstats \
+sms \
+speeddial \
+sst \
+tmrec \
+topoh \
+uid_auth_db \
+uid_avp_db \
+uid_domain \
+uid_gflags \
+uid_uri_db \
+uri_db \
+userblacklist \
+xhttp_rpc \
+auth_xkeys \
+dmq_usrloc \
+statsd \
+tcpops \
+cfgt \
+smsops \
+statsc \
+topos \
+xprint"
+
+INCLUDE_MODULES="pua_dialoginfo \
+presence \
+presence_dialoginfo \
+presence_mwi \
+presence_profile \
+presence_reginfo \
+presence_xml \
+pua \
+pua_bla \
+pua_dialoginfo \
+pua_mi pua_reginfo \
+pua_usrloc \
+pua_xmpp \
+sl \
+kazoo \
+snmpstats \
+tls \
+siptrace \
+sipcapture \
+xhttp \
+websocket \
+qos \
+ratelimit \
+msrp \
+avpops \
+avp \
+sqlops \
+db_mysql \
+timer \
+ipops \
+path \
+outbound \
+statistics \
+uuid \
+async \
+cfg_rpc \
+cfgutils \
+log_custom \
+tsilo"
+
+make FLAVOUR=kamailio cfg \
+  prefix=/usr/local/kamailio \
+  skip_modules="${EXCLUDE_MODULES}" \
+  include_modules="${INCLUDE_MODULES}" \
+  SCTP=0 \
+  STUN=1 \
+  TLS_HOOKS=1

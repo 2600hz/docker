@@ -12,3 +12,4 @@ docker run $FLAGS \
 	--env RABBITMQ=rabbitmq.$NETWORK \
 	--env FREESWITCH=freeswitch.$NETWORK \
 	kazoo/kamailio
+docker exec $NAME /usr/local/kamailio/sbin/kamctl dispatcher add 1 sip:$FREESWITCH:11000 0 1 ' ' ' '
