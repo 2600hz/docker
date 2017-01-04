@@ -9,8 +9,8 @@ couchdb/run.sh
 kamailio/run.sh
 monster-ui/run.sh
 
-RABBITMQ_IP=$(bin/get-ip rabbitmq.kazoo)
-COUCHDB_IP=$(bin/get-ip couchdb.kazoo)
+RABBITMQ_IP=$(bin/get-ip.sh rabbitmq.kazoo)
+COUCHDB_IP=$(bin/get-ip.sh couchdb.kazoo)
 
 export NETWORK=zone1
 kazoo/run.sh "-td --add-host rabbitmq.kazoo:$RABBITMQ_IP --add-host couchdb.kazoo:$COUCHDB_IP"

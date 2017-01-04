@@ -18,6 +18,7 @@ Init
 ====
 
 ```sh
+cd bin/
 build.sh
 run.sh
 hosts.sh >> /etc/hosts

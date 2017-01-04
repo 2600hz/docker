@@ -2,7 +2,7 @@
 NETWORK=${NETWORK:-"kazoo"}
 BUILD_ARG=${1:-""}
 REPO=${2:-"https://github.com/2600hz/monster-ui.git"}
-COMMIT=${3:-"$(../bin/get-commit $REPO)"}
+COMMIT=${3:-"$(../bin/get-commit.sh $REPO)"}
 rm -rf etc/.ssh
 if [ -d ~/.ssh ]
 then
