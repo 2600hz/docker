@@ -93,3 +93,6 @@ ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
 CMD ["couchdb"]
 
 COPY etc/local.ini /usr/local/etc/couchdb/local.ini
+RUN echo "change_me" > /var/lib/couchdb/.erlang.cookie
+RUN chown couchdb:couchdb /var/lib/couchdb/.erlang.cookie
+RUN chmod 600 /var/lib/couchdb/.erlang.cookie

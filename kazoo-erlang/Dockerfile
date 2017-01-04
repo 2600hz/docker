@@ -13,3 +13,5 @@ USER user
 
 COPY build/setup-erlang.sh build/setup-erlang.sh
 RUN build/setup-erlang.sh
+
+USER root
