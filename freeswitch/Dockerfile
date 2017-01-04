@@ -22,5 +22,6 @@ RUN ./install.sh
 USER freeswitch
 WORKDIR "/usr/local/freeswitch"
 
+ENV PATH "$PATH:/usr/local/freeswitch/bin"
 COPY build/run.sh run.sh
-ENTRYPOINT [ "./run.sh" ]
+CMD [ "./run.sh" ]
