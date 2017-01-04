@@ -1,10 +1,6 @@
 FROM kazoo/base-os
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
-ENV NETWORK=kazoo
-ENV RABBITMQ=rabbitmq.$NETWORK
-ENV FREESWITCH=freeswitch.$NETWORK
-
 USER root
 WORKDIR /root
 
@@ -26,6 +22,7 @@ RUN ./install.sh
 USER kamailio
 WORKDIR "/usr/local/kamailio"
 
+ENV PATH "$PATH:/usr/local/kamailio/sbin"
 COPY build/config-local.sh config-local.sh
 COPY build/run.sh run.sh
-ENTRYPOINT [ "./run.sh" ]
+CMD [ "./run.sh" ]

@@ -12,13 +12,11 @@ cd /usr/local/src/kamailio
 make install
 
 groupadd kamailio
-
-adduser --disabled-password  --quiet --system --home $KAMAILIO_BASE --ingroup kamailio kamailio
+adduser --disabled-password --quiet --system --home $KAMAILIO_BASE --ingroup kamailio kamailio
 
 rm -rf $CFG_BASE
-cp -a /usr/local/src/kazoo-configs/kamailio $CFG_BASE
-sed -i -E "s/mpath=/#mpath=/g" $DEFAULT_CFG
-sed -i -E 's/modparam\("mi_fifo"/#modparam\("mi_fifo"/g' $DEFAULT_CFG
+ln -s /usr/local/src/kazoo-configs/kamailio $CFG_BASE
+sed -i 's|loadmodule "mi_fifo.so"||g;s|mpath=|#mpath=|g' $DEFAULT_CFG
 sed -i 's|/etc/kazoo/kamailio/dbtext|/usr/local/kamailio/etc/kamailio/dbtext|g' $DEFS_CFG
 sed -i 's|/etc/kazoo/kamailio/dbtext|/usr/local/kamailio/etc/kamailio/dbtext|g' $LOCAL_CFG
 sed -i 's|/etc/kazoo/kamailio/dbtext|/usr/local/kamailio/etc/kamailio/dbtext|g' $DISPATCHER_CFG
