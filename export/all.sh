@@ -1,6 +1,6 @@
 #!/bin/bash
 export NETWORK=${NETWORK:-"kazoo"}
-docker rmi $(docker images | grep "2600hz/" | cut -d' ' -f 1)
+docker rmi -f $(docker images | grep "2600hz/" | cut -d' ' -f 1)
 cd export/couchdb
 ./build.sh
 cd ../rabbitmq
