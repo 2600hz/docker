@@ -11,7 +11,7 @@ Notes
 =====
 
 * All components depends on base-os image (Debian:Jessie with Erlang 18 preinstalled)
-* BigCouch is replaced by CouchDB 2.0
+* BigCouch is replaced by CouchDB 1.6
 * All images are not optimized by size (however it is possible to combine)
 
 Init
@@ -23,11 +23,9 @@ run.sh
 hosts.sh >> /etc/hosts
 ```
 
-admin.sh gives access to the host inside the kazoo network.
-You need hosts file to access ui by http://kazoo-ui.kazoo and http://monster-ui.kazoo, and they,
-in turn, need to access http://kazoo.kazoo:8000, and you probably want to run UI on your host.
+You need hosts file to access Kazoo UI by http://monster-ui.kazoo, and in turn it needs access to http://kazoo.kazoo:8000.
 
-Please note each container run.sh and build.sh should be run inside their respective folders.
+Please note each container run.sh and build.sh scripts should be run inside their respective folders.
 
 After start
 ===========
@@ -164,4 +162,3 @@ TODO
 
 * Add haproxy to setup (balance the load between two or more instances of kazoo)
 * Inter-container file exchange for sup (monster-ui apps, kazoo-sounds)
-* Parametrize FROM in Dockerfiles
