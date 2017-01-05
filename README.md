@@ -128,7 +128,7 @@ How to register Monster-UI apps.
 3. You need to 'register' these apps
 
 ```sh
-docker cp monster-ui.kazoo:/usr/share/nginx/html/apps apps
+docker cp monster-ui.kazoo:/usr/share/nginx/html/src/apps apps
 docker cp apps kazoo.kazoo:/home/user
 rm -rf apps
 cd kazoo
