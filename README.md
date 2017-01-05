@@ -23,7 +23,7 @@ run.sh
 hosts.sh >> /etc/hosts
 ```
 
-You need hosts file to access Kazoo UI by http://monster-ui.kazoo, and in turn it needs access to http://kazoo.kazoo:8000.
+You need to append /etc/hosts file to access Monster UI by URL http://monster-ui.kazoo:3000, and in turn it needs access to http://kazoo.kazoo:8000.
 
 Please note each container run.sh and build.sh scripts should be run inside their respective folders.
 
