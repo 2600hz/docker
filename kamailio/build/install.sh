@@ -37,3 +37,5 @@ chmod -R u=rwx,g=rx $KAMAILIO_BASE/sbin/*
 mkdir -p /var/run/kamailio/
 chown kamailio:kamailio /var/run/kamailio/
 
+chown -R kamailio:kamailio /usr/local/src/kazoo-configs/kamailio
+

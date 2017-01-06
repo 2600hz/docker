@@ -1,7 +1,8 @@
 #!/bin/bash
 
 export NETWORK=${NETWORK:-"kazoo"}
-ZONES=1
+export RABBITMQ="rb1.$NETWORK"
+
 DB_NODES=3
 FS_NODES=2
 RB_NODES=1
@@ -23,6 +24,11 @@ function createNetwork() {
 	docker network create $NETWORK
 }
 
+function buildCouchDb() {
+	docker pull klaemo/couchdb:2.0.0
+	(cd ../couchdb2.0;./build.sh)
+}
+
 function runCouchDb() {
 	for ((n=1;n<=$DB_NODES;n++))
 	do
@@ -38,9 +44,15 @@ function runCouchDb() {
 		then
 			docker exec db1.$NETWORK curl -X PUT "http://127.0.0.1:5986/_nodes/couchdb@$NAME" -d {} &> /dev/null
 		fi
-  done
+	done
 
 	docker exec db1.$NETWORK curl "http://127.0.0.1:5984/_membership"
+}
+
+function buildFreeswitch() {
+	docker pull debian:jessie
+	(cd ../base-os;./build.sh)
+	(cd ../freeswitch;./build.sh)
 }
 
 function runFreeswitch() {
@@ -51,12 +63,23 @@ function runFreeswitch() {
 	done
 }
 
+function buildRabbit() {
+	docker pull rabbitmq:3.6.2
+	(cd ../rabbitmq;./build.sh)
+}
+
 function runRabbit() {
 	for ((n=1;n<=$RB_NODES;n++))
 	do
 		export NAME="rb$n.$NETWORK"
 		../rabbitmq/run.sh
 	done
+}
+
+function buildKamailio() {
+	docker pull debian:jessie
+	(cd ../base-os;./build.sh)
+	(cd ../kamailio;./build.sh)
 }
 
 function runKamailio() {
@@ -76,9 +99,17 @@ function runKamailio() {
 }
 
 confirm "Create network $NETWORK [y/N]" && createNetwork
+
+confirm "Build CouchDB 2.0 image [y/N]" && buildCouchDb
 runCouchDb
-runFreeswitch
+
+confirm "Build RabbitMQ image [y/N]" && buildRabbit
 runRabbit
+
+confirm "Build FreeSWITCH image [y/N]" && buildFreeswitch
+runFreeswitch
+
+confirm "Build Kamailio image [y/N]" && buildKamailio
 runKamailio
 
 # docker run -it -d -h app1.$NETWORK --name app1.$NETWORK -v /opt/projects/github/2600hz/kazoo:/opt/kazoo kazoo/erlang /opt/kazoo/scripts/dev-start-apps.sh

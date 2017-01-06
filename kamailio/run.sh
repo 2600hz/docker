@@ -8,9 +8,7 @@ docker run $FLAGS \
 	--net $NETWORK \
 	-h $NAME \
 	--name $NAME \
-	--env NETWORK=$NETWORK \
-	--env RABBITMQ=rabbitmq.$NETWORK \
-	--env FREESWITCH=freeswitch.$NETWORK \
+	--env RABBITMQ=${RABBITMQ:-"rabbitmq.$NETWORK"} \
 	kazoo/kamailio
 
 if [ -n "$FREESWITCH" ]
