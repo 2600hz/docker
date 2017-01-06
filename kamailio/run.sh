@@ -15,5 +15,5 @@ docker run $FLAGS \
 
 if [ -n "$FREESWITCH" ]
 then
-  docker exec $NAME /usr/local/kamailio/sbin/kamctl dispatcher add 1 sip:$FREESWITCH:11000 0 1 ' ' ' '
+	docker exec $NAME /usr/local/kamailio/sbin/kamctl dispatcher add 1 sip:$FREESWITCH:11000 0 1 ' ' ' '
 fi
