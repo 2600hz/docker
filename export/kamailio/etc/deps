@@ -1,6 +1,5 @@
 libc6
 libcurl3
-libev4
 libevent-2.0-5
 libjson-c2
 libmysqlclient18

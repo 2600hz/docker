@@ -6,8 +6,8 @@ mkdir -p kamailio/usr/local
 mkdir -p kamailio/etc
 mkdir -p kamailio/root
 docker cp build/find-debian-deps.sh $CONTAINER:/root
-docker exec -ti --user root $CONTAINER /root/find-debian-deps.sh /usr/local | sed -e 's/\x0D//' > etc/deps
-docker exec -ti --user root $CONTAINER rm -f /root/find-debian-deps.sh
+docker exec --user root $CONTAINER /root/find-debian-deps.sh /usr/local | sed -e 's/\x0D//' > etc/deps
+docker exec --user root $CONTAINER rm -f /root/find-debian-deps.sh
 docker cp $CONTAINER:/usr/local kamailio/usr/
 docker cp $CONTAINER:/etc/kamailio kamailio/etc/kamailio
 docker cp $CONTAINER:/root/run.sh kamailio/root/run.sh
