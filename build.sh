@@ -1,17 +1,17 @@
 #!/bin/sh
 cd base-os
-./build.sh $*
+./build.sh
 cd ../kazoo-erlang
-./build.sh $*
+./build.sh
 cd ../rabbitmq
-./build.sh $*
+./build.sh
 cd ../couchdb
-./build.sh $*
+./build.sh
 cd ../kamailio
-./build.sh $*
+./build.sh
 cd ../freeswitch
-./build.sh $*
+./build.sh
 cd ../kazoo
-./build.sh $*
+./build.sh
 cd ../monster-ui
-./build.sh $*
+./build.sh
