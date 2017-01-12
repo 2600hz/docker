@@ -2,6 +2,7 @@
 FLAGS=${1:-"-td"}
 NETWORK=${NETWORK:-"kazoo"}
 NAME=${NAME:-"kamailio.$NETWORK"}
+FREESWITCH=${FREESWITCH:-"freeswitch.$NETWORK"}
 docker stop -t 1 $NAME
 docker rm -f $NAME
 docker run $FLAGS \
