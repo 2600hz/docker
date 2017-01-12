@@ -1,3 +1,3 @@
 #!/bin/sh
 NETWORK=${NETWORK:-"kazoo"}
-docker build $1 -t $NETWORK/couchdb2 .
+docker build $BUILD_ALL $BUILD_COUCHDB -t $NETWORK/couchdb2 .

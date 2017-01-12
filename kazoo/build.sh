@@ -1,8 +1,7 @@
 #!/bin/sh
 NETWORK=${NETWORK:-"kazoo"}
-BUILD_ARG=${1:-"-q"}
+COMMIT=${1:-"$(../bin/get-commit $REPO)"}
 REPO=${2:-"https://github.com/2600hz/kazoo.git"}
-COMMIT=${3:-"$(../bin/get-commit $REPO)"}
 echo Using repository $REPO commit $COMMIT
 echo $COMMIT > etc/commit
-docker build $BUILD_ARG -t $NETWORK/kazoo --build-arg REPO=$REPO .
+docker build $BUILD_ALL $BUILD_KAZOO -t $NETWORK/kazoo --build-arg REPO=$REPO .

@@ -148,6 +148,29 @@ and kamailio hosts.
 
 You should run after-start.sh only after kazoo finishes database update.
 
+Environment variables
+=====================
+
+The intent is to specify docker build flags per-image and globally (e.g. to pass --no-cache to forcefully rebuild)
+
+
+```
+BUILD_ALL -- flags to pass to build command for every image
+```
+
+Image-specific:
+
+```
+BUILD_BASE -- kazoo/base
+BUILD_ERLANG  -- kazoo/erlang
+BUILD_COUCHDB -- kazoo/couchdb
+BUILD_KAMAILIO -- kazoo/kamailio
+BUILD_FREESWITCH -- kazoo/freeswitch
+BUILD_RABBITMQ -- kazoo/rabbitmq
+BUILD_KAZOO -- kazoo/kazoo
+BUILD_MONSTER -- kazoo/monster-ui
+```
+
 Development
 ===========
 
