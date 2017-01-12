@@ -19,8 +19,6 @@ RUN ./build.sh
 COPY build/install.sh install.sh
 RUN ./install.sh
 
-COPY etc/freeswitch /usr/local/freeswitch/conf
-
 USER freeswitch
 WORKDIR "/usr/local/freeswitch"
 
