@@ -1,8 +1,8 @@
 #!/bin/sh
-COMMIT=${COMMIT:-"HEAD"}
+COMMIT=$(cat /root/commit)
 git clone https://github.com/mreiferson/libevbuffsock libevbuffsock
-git clone --depth 1 --no-single-branch https://github.com/nsqio/libnsq libnsq
-git clone https://github.com/kamailio/kamailio.git kamailio
+git clone https://github.com/nsqio/libnsq libnsq
+git clone $REPO kamailio
 cd kamailio
 git checkout $COMMIT
 cd ../

@@ -1,11 +1,9 @@
 hosts
 kazoo/etc/commit
 monster-ui/etc/commit
-makebusy/etc/commit
-makebusy/logs
+kamailio/etc/commit
 kazoo-sounds
 makebusy/etc/api_key
-.ssh
 export/freeswitch/freeswitch.tar
 export/kazoo/kazoo.tar
 export/kamailio/kamailio.tar

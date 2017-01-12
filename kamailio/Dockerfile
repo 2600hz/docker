@@ -5,7 +5,7 @@ ENV NETWORK=kazoo
 ENV RABBITMQ=rabbitmq.$NETWORK
 ENV FREESWITCH=freeswitch.$NETWORK
 
-ARG COMMIT=HEAD
+ARG REPO=https://github.com/kamailio/kamailio.git
 
 USER root
 WORKDIR /root
@@ -13,6 +13,7 @@ WORKDIR /root
 COPY build/setup-os.sh build/setup-os.sh
 RUN build/setup-os.sh
 
+COPY etc/commit /root/commit
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
 
