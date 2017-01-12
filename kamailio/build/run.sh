@@ -6,7 +6,6 @@ export GROUP=kamailio
 
 ./config-local.sh
 
-exec /usr/local/sbin/kamailio -E -DD \
-        -P /run/kamailio/kamailio.pid \
-        -f /etc/kamailio/kamailio.cfg \
-        -m $SHM_MEMORY -M $PKG_MEMORY -u $USER -g $GROUP
+exec /usr/local/kamailio/sbin/kamailio -E -DD \
+	-f /usr/local/kamailio/etc/kamailio/kamailio.cfg \
+	-m $SHM_MEMORY -M $PKG_MEMORY -u $USER -g $GROUP

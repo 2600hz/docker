@@ -1,8 +1,0 @@
-ETCDIR=/etc/kamailio
-DBENGINE=DBTEXT
-DB_PATH="/etc/kamailio/dbtext"
-DBTEXT_PATH="/etc/kamailio/dbtext"
-INSTALL_EXTRA_TABLES=yes
-INSTALL_PRESENCE_TABLES=yes
-INSTALL_DBUID_TABLES=yes
-STARTOPTIONS="-M 128 -m 512"

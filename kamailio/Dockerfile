@@ -1,30 +1,34 @@
 FROM kazoo/base-os
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
-ENV NETWORK=kazoo
-ENV RABBITMQ=rabbitmq.$NETWORK
-ENV FREESWITCH=freeswitch.$NETWORK
-
-ARG REPO=https://github.com/kamailio/kamailio.git
-
 USER root
 WORKDIR /root
 
+ENV NETWORK=kazoo
+ENV RABBITMQ=rabbitmq.$NETWORK
+ARG REPO=https://github.com/kamailio/kamailio.git
+
+COPY etc/commit commit
 COPY build/setup-os.sh build/setup-os.sh
 RUN build/setup-os.sh
 
-COPY etc/commit /root/commit
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
 
-COPY etc/modules.lst /root/kamailio/
+COPY build/configure.sh configure.sh
+RUN ./configure.sh
+
 COPY build/build.sh build/build.sh
 RUN build/build.sh
 
-COPY etc/ etc
-COPY build/config-kazoo.sh build/config-kazoo.sh
-RUN build/config-kazoo.sh
+COPY build/install.sh install.sh
+RUN ./install.sh
 
-COPY build/run.sh run.sh
+USER kamailio
+WORKDIR "/usr/local/kamailio"
+
+ENV PATH "$PATH:/usr/local/kamailio/sbin"
 COPY build/config-local.sh config-local.sh
-ENTRYPOINT ["./run.sh"]
+COPY build/run.sh run.sh
+COPY build/dispatcher_add.sh sbin/dispatcher_add.sh
+CMD [ "./run.sh" ]
