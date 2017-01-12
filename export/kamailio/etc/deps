@@ -1,11 +1,8 @@
 libc6
-libcurl3
 libevent-2.0-5
 libjson-c2
-libmysqlclient18
 librabbitmq1
 libssl1.0.0
 libunistring0
 libuuid1
 libxml2
-zlib1g

@@ -2,6 +2,7 @@
 FLAGS=${1:-"-td"}
 NETWORK=${NETWORK:-"kazoo"}
 NAME=kamailio.$NETWORK
+FREESWITCH=${FREESWITCH:-"freeswitch.$NETWORK"}
 docker stop -t 1 $NAME
 docker rm -f $NAME
 docker run $FLAGS \
@@ -11,3 +12,11 @@ docker run $FLAGS \
 	--env NETWORK=$NETWORK \
 	--env RABBITMQ=rabbitmq.$NETWORK \
 	2600hz/kamailio
+
+if [ -n "$FREESWITCH" ]
+then
+   echo Adding dispatcher $FREESWITCH to Kamailio
+   docker exec $NAME dispatcher_add.sh 1 $FREESWITCH
+else
+   echo No dispatcher added, please add manually.
+fi

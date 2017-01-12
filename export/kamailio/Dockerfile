@@ -18,8 +18,15 @@ ADD kamailio.tar /
 RUN groupadd kamailio \
 	&& useradd --home-dir /var/run/kamailio -g kamailio kamailio \
 	&& apt-get -y update \
-	&& apt-get -y install $(cat /root/deps) \
+	&& apt-get -y install python $(cat /root/deps) \
 	&& apt-get -y clean \
 	&& apt-clean --aggressive 
+
+RUN mkdir /var/run/kamailio/ && chown kamailio:kamailio /var/run/kamailio/
+
+ENV PATH "$PATH:/usr/local/kamailio/sbin"
+ENV HOME "/usr/local/kamailio"
+USER kamailio
+WORKDIR "/usr/local/kamailio"
 
 ENTRYPOINT [ "./run.sh" ]
