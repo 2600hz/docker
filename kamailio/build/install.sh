@@ -23,7 +23,8 @@ sed -i 's|/etc/kazoo/kamailio/dbtext|/usr/local/kamailio/etc/kamailio/dbtext|g' 
 
 cp -a ~/kamailio/utils/kamctl/kamctlrc $KAMCTLRC
 sed -i 's|# DBENGINE=MYSQL|DBENGINE=DBTEXT|g' $KAMCTLRC
-sed -i 's|# DB_PATH="/usr/local/etc/kamailio/dbtext"|DB_PATH="/usr/local/kamailio/etc/kamailio/dbtext"|g' $KAMCTLRC
+sed -i 's|# DB_PATH="/usr/local/etc/kamailio/dbtext"|DBTEXT_PATH="/usr/local/kamailio/etc/kamailio/dbtext"|g' $KAMCTLRC
+sed -i 's|# DBTEXT_PATH="/usr/local/etc/kamailio/dbtext"|DBTEXT_PATH="/usr/local/kamailio/etc/kamailio/dbtext"|g' $KAMCTLRC
 sed -i 's|# INSTALL_EXTRA_TABLES=ask|INSTALL_EXTRA_TABLES=no|g' $KAMCTLRC
 sed -i 's|# INSTALL_PRESENCE_TABLES=ask|INSTALL_PRESENCE_TABLES=yes|g' $KAMCTLRC
 sed -i 's|# INSTALL_DBUID_TABLES=ask|INSTALL_DBUID_TABLES=no|g' $KAMCTLRC
