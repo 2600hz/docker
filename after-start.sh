@@ -7,6 +7,7 @@ echo Init the system
 cd kazoo
 ./sup crossbar_maintenance create_account admin kamailio.$NETWORK admin admin
 ./sup ecallmgr_maintenance add_fs_node freeswitch@freeswitch.$NETWORK
+./sup ecallmgr_maintenance allow_carrier kamailio $(gethostip -d kamailio.$NETWORK)
 
 git clone --depth 1 --no-single-branch https://github.com/2600hz/kazoo-sounds
 docker cp kazoo-sounds/kazoo-core/en/us kazoo.$NETWORK:/home/user
