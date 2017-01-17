@@ -5,9 +5,19 @@ then
 	exit
 fi
 NAME=kazoo-ci
-docker stop -t 1 $NAME
-docker rm -f $NAME
+
+if [ -n "$(docker ps -aq -f name=$NAME)" ]
+then
+   echo -n "stopping: "
+   docker stop -t 1 $NAME
+   echo -n "removing: "
+   docker rm -f $NAME
+fi
+
+echo -n "mounting: "
 docker run -v kazoo-ci:/home/user/volume --user root --entrypoint ./volume.sh kazoo/ci
+
+echo -n "starting: $NAME "
 docker run \
 	-h $NAME \
 	--name $NAME \
