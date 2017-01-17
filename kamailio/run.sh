@@ -2,7 +2,7 @@
 FLAGS=${1:-"-td"}
 NETWORK=${NETWORK:-"kazoo"}
 NAME=${NAME:-"kamailio.$NETWORK"}
-FREESWITCH=${FREESWITCH:-"freeswitch.$NETWORK"}
+KAZOO=${KAZOO:-"kazoo.$NETWORK"}
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
 then
@@ -19,11 +19,3 @@ docker run $FLAGS \
 	--name $NAME \
 	--env RABBITMQ=${RABBITMQ:-"rabbitmq.$NETWORK"} \
 	kazoo/kamailio
-
-if [ -n "$FREESWITCH" ]
-then
-	echo Adding dispatcher $FREESWITCH to Kamailio
-	docker exec $NAME dispatcher_add.sh 1 $FREESWITCH
-else
-	echo No dispatcher added, please add manually.
-fi
