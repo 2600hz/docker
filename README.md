@@ -17,6 +17,8 @@ Notes
 Init
 ====
 
+You need to have Docker version at least 1.9.0 (as this setup relies on docker network heavily).
+
 ```sh
 build.sh
 run.sh
@@ -85,9 +87,16 @@ cd kazoo
 
 # Check RabbitMQ
 ./sup kazoo_amqp_maintenance connection_summary
+```
 
-# Check system status (this is probably what you should see)
-./sup kz_nodes status
+Sanity check
+============
+
+## Check Kazoo status (this is probably what you should see)
+
+```
+$ docker exec kazoo.kazoo sup kz_nodes status
+
 Node          : kazoo@kazoo.kazoo
 Version       : 4.0.0 - 18
 Memory Usage  : 190.55MB
@@ -114,6 +123,46 @@ Ports         : 0
 Zone          : local
 Broker        : amqp://rabbitmq.kazoo:5672
 WhApps        : kamailio(17m37s)
+```
+
+## Check Kazoo knows about Kamailio instance
+
+```
+$ docker exec kazoo.kazoo sup ecallmgr_maintenance acl_summary
++--------------------------------+-------------------+---------------+-------+------------------+----------------------------------+
+| Name                           | CIDR               | List          | Type  | Authorizing Type | ID                               |
++================================+===================+===============+=======+==================+==================================+
+| kamailio.kazoo                 | 172.18.0.5/32      | authoritative | allow | system_config    |                                  |
++--------------------------------+-------------------+---------------+-------+------------------+----------------------------------+
+```
+
+## Check Kamailio has FreeSwitch as dispatcher
+
+```
+$ docker exec kamailio.kazoo kamcmd dispatcher.list
+{
+        NRSETS: 1
+        RECORDS: {
+                SET: {
+                        ID: 1
+                        TARGETS: {
+                                DEST: {
+                                        URI: sip:freeswitch.kazoo:11000
+                                        FLAGS: AP
+                                        PRIORITY: 1
+                                        ATTRS: {
+                                                BODY:  
+                                                DUID: 
+                                                MAXLOAD: 0
+                                                WEIGHT: 0
+                                                RWEIGHT: 0
+                                                SOCKET: 
+                                        }
+                                }
+                        }
+                }
+        }
+}
 ```
 
 Monster-UI
