@@ -1,4 +1,5 @@
 #!/bin/sh
+[ -n "$SKIP_BUILD" ] && exit 0
 . erlang/activate
 cd kazoo
 git fetch

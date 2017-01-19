@@ -8,5 +8,14 @@ export KAZOO_APPS=sysconf,blackhole,callflow,cdr,conference,crossbar,fax,hangups
 export RELX_REPLACE_OS_VARS=true
 export KZname="-name $KAZOO_NODE"
 
-cd kazoo
-exec _rel/kazoo/bin/kazoo $COMMAND $*
+[ ! -e kazoo/erlang.mk ] && echo "Container is built without Kazoo sources, please specify with KAZOO_SOURCE env variable" && exit 1
+
+if [ -e ./skip_build ]
+then
+	cd kazoo
+	make compile build-dev-release
+	exec _rel/kazoo/bin/kazoo $COMMAND $*
+else
+	cd kazoo
+	exec _rel/kazoo/bin/kazoo $COMMAND $*
+fi

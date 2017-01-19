@@ -9,6 +9,9 @@ ENV COUCHDB=couchdb.$NETWORK
 ENV RABBITMQ=rabbitmq.$NETWORK
 
 ARG REPO=https://github.com/2600hz/kazoo.git
+ARG SKIP_BUILD=""
+ARG UID
+ARG GID
 
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
@@ -23,3 +26,8 @@ COPY build/sup bin/sup
 COPY etc/commit /home/user/commit
 COPY build/build.sh build/build.sh
 RUN build/build.sh
+
+COPY build/setup_uid.sh build/setup_uid.sh
+USER root
+RUN build/setup_uid.sh
+USER user
