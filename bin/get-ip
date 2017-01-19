@@ -6,4 +6,4 @@ then
 	exit
 fi
 
-docker inspect --format "{{ .NetworkSettings.Networks.$NETWORK.IPAddress }}" $1
+docker inspect --format "{{ (index .NetworkSettings.Networks \"$NETWORK\").IPAddress }}" $1
