@@ -1,11 +1,12 @@
 Kazoo as docker containers
 ==========================
 
-Goal
-====
+Preface
+=======
 
-To have all Kazoo components as independent docker containers. Containers are buildable
-from scratch using source code repositories only.
+This is development environment, it provides all Kazoo components alongside with source code,
+and a way to modify it on each step. If you're interested in just running Kazoo in Docker environment
+please check [production images](https://github.com/jamhed/kazoo-docker).
 
 Notes
 =====
