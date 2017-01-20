@@ -23,11 +23,13 @@ ENTRYPOINT ./run.sh
 ENV PATH $PATH:/home/user/bin
 COPY build/sup bin/sup 
 
-COPY etc/commit /home/user/commit
-COPY build/build.sh build/build.sh
-RUN build/build.sh
+COPY build/cmd.sh ./cmd.sh
 
 COPY build/setup_uid.sh build/setup_uid.sh
 USER root
 RUN build/setup_uid.sh
 USER user
+
+COPY etc/commit /home/user/commit
+COPY build/build.sh build/build.sh
+RUN build/build.sh
