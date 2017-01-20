@@ -10,5 +10,5 @@ MY_IP=$(hostname -i)
 /bin/sed -i "s/kamailio.2600hz.com/$HOSTNAME/g" $LOCAL
 
 # rabbitmq
-/bin/sed -i "s/MY_AMQP_URL!.*|/MY_AMQP_URL!kazoo:\/\/guest:guest@$RABBITMQ:5672/g" $LOCAL
+/bin/sed -i "s/MY_AMQP_URL!.*!/MY_AMQP_URL!kazoo:\/\/guest:guest@$RABBITMQ:5672!/g" $LOCAL
 
