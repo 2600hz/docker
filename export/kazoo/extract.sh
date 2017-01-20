@@ -11,5 +11,5 @@ docker cp -L $CONTAINER:/home/user/kazoo/_rel/ kazoo
 docker cp -L $CONTAINER:/home/user/kazoo/rel/ kazoo
 docker cp -L $CONTAINER:/home/user/config.ini kazoo
 docker cp -L $CONTAINER:/home/user/bin/sup kazoo
-tar cf kazoo.tar kazoo/ --owner=1000 --group=1000
-rm -rf kazoo
+cd kazoo && tar cf ../kazoo.tar . --owner=1000 --group=1000
+cd ../ && rm -rf kazoo

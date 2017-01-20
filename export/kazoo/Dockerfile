@@ -19,8 +19,10 @@ RUN groupadd user \
 	&& useradd -g user user \
 	&& apt-get -y update \
 	&& apt-get -y install $(cat /root/deps) \
-	&& apt-clean --aggressive
+	&& apt-clean --aggressive \
+	&& chown user:user /home/user && chown user:user /home/user/run.sh
 
+ENV PATH=$PATH:/home/user
 USER user
 WORKDIR "/home/user"
 ENTRYPOINT [ "./run.sh" ]

@@ -16,7 +16,7 @@ RUN groupadd freeswitch \
 	&& useradd --home-dir /usr/local/freeswitch -g freeswitch freeswitch \
 	&& cat /root/freeswitch.key.gpg | apt-key add - \
 	&& apt-get -y update \
-	&& apt-get -y install wget curl $(cat /root/deps) \
+	&& apt-get -y install erlang-base wget curl $(cat /root/deps) \
 	&& apt-get -y clean \
 	&& apt-clean --aggressive
 
