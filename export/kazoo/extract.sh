@@ -10,5 +10,6 @@ docker exec --user root $CONTAINER rm -f /root/find-debian-deps.sh
 docker cp -L $CONTAINER:/home/user/kazoo/_rel/ kazoo
 docker cp -L $CONTAINER:/home/user/kazoo/rel/ kazoo
 docker cp -L $CONTAINER:/home/user/config.ini kazoo
+docker cp -L $CONTAINER:/home/user/bin/sup kazoo
 tar cf kazoo.tar kazoo/ --owner=1000 --group=1000
 rm -rf kazoo
