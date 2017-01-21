@@ -2,6 +2,7 @@ hosts
 kazoo/etc/commit
 monster-ui/etc/commit
 kamailio/etc/commit
+freeswitch/etc/commit
 kazoo-sounds
 makebusy/etc/api_key
 export/freeswitch/freeswitch.tar
