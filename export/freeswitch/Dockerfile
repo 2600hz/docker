@@ -4,6 +4,7 @@ MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 # override this (if needed) with run --env option
 ENV NETWORK=kazoo
+ENV RTP_START_PORT=10000
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV APT_LISTCHANGES_FRONTEND=none
@@ -22,4 +23,4 @@ RUN groupadd freeswitch \
 
 USER freeswitch
 WORKDIR "/usr/local/freeswitch"
-ENTRYPOINT [ "./run.sh" ]
+ENTRYPOINT [ "./run-deploy.sh" ]
