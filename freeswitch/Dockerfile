@@ -26,7 +26,7 @@ RUN build/build.sh
 COPY build/setup-config.sh build/setup-config.sh
 RUN build/setup-config.sh
 
-COPY build/install.sh install.sh
+COPY build/install.sh build/install.sh
 RUN build/install.sh
 
 USER freeswitch
