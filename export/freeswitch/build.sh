@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build $1 -t 2600hz/freeswitch .
+docker build $BUILD_FLAGS -t 2600hz/freeswitch .

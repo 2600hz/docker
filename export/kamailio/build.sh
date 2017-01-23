@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build $1 -t 2600hz/kamailio .
+docker build $BUILD_FLAGS -t 2600hz/kamailio .
