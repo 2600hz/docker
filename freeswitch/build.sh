@@ -5,4 +5,4 @@ COMMIT=${1:-"$(../bin/get-commit $REPO)"}
 
 echo $COMMIT > etc/commit
 
-docker build $BUILD_ALL $BUILD_FREESWITCH --build-arg REPO=$REPO -t $NETWORK/freeswitch .
+docker build $BUILD_FLAGS --build-arg REPO=$REPO -t $NETWORK/freeswitch .

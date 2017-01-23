@@ -1,3 +1,3 @@
 #!/bin/sh
 NETWORK=${NETWORK:-"kazoo"}
-docker build $BUILD_ALL $BUILD_RABBITMQ -t $NETWORK/rabbitmq .
+docker build $BUILD_FLAGS -t $NETWORK/rabbitmq .

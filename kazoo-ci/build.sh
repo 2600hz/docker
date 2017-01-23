@@ -6,4 +6,4 @@ then
 	echo Please provide a token to access private repo: $0 token [docker_gid]
 	exit 1
 fi
-docker build -t kazoo/ci --no-cache --build-arg TOKEN=$TOKEN --build-arg DOCKER=$DOCKER .
+docker build $BUILD_FLAGS -t kazoo/ci --no-cache --build-arg TOKEN=$TOKEN --build-arg DOCKER=$DOCKER .

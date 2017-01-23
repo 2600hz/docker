@@ -8,7 +8,7 @@ GID=$(id -g)
 
 echo Using repository $REPO commit $COMMIT
 echo $COMMIT > etc/commit
-docker build $BUILD_ALL $BUILD_KAZOO -t $NETWORK/kazoo \
+docker build $BUILD_FLAGS -t $NETWORK/kazoo \
 	--build-arg REPO=$REPO \
 	--build-arg SKIP_BUILD=$SKIP_BUILD \
 	--build-arg UID=$UID \
