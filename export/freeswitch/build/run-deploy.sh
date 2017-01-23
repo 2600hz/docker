@@ -1,4 +1,4 @@
 #!/bin/sh
-./set-xml-key.sh conf/autoload_configs/switch.conf.xml rtp-start-port $RTP_START_PORT
-./set-xml-key.sh conf/autoload_configs/switch.conf.xml rtp-end-port $( expr $RTP_START_PORT + 999 )
+xmlstarlet edit --inplace -u '/configuration/settings/param[@name="rtp-start-port]/@value' -v $RTP_START_PORT conf/autoload_configs/switch.conf.xml
+xmlstarlet edit --inplace -u '/configuration/settings/param[@name="rtp-end-port]/@value' -v  $( expr $RTP_START_PORT + 999 ) conf/autoload_configs/switch.conf.xml
 exec ./run.sh
