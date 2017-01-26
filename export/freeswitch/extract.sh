@@ -7,7 +7,6 @@ docker exec --user root $CONTAINER /root/find-debian-deps.sh /usr/local/freeswit
 docker exec --user root $CONTAINER rm -f /root/find-debian-deps.sh
 curl http://files.freeswitch.org/repo/deb/debian/key.gpg > etc/freeswitch.key.gpg
 docker cp $CONTAINER:/usr/local/freeswitch freeswitch
-cp build/set-xml-key.sh freeswitch/
 cp build/run-deploy.sh freeswitch/
 rm -rf freeswitch/sounds/*
 tar cf freeswitch.tar freeswitch/ --owner=1000 --group=1000
