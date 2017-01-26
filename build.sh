@@ -11,7 +11,7 @@ cd ../kazoo-erlang && ./build.sh
 cd ../rabbitmq && ./build.sh
 cd ../couchdb &&./build.sh
 cd ../kamailio && ./build.sh d62fd3e4976633aa6b827d527f4e15de0b08068b
-# 1.6.14
-cd ../freeswitch && ./build.sh e460bf85396a57a36b47752cb5997dd60ed373ef
+# 1.6.13
+cd ../freeswitch && ./build.sh e755b430da70bd63eebf1dfddacdce48ce863fce
 cd ../kazoo && ./build.sh
 cd ../monster-ui && ./build.sh
