@@ -3,9 +3,10 @@ MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 ARG TOKEN
 ARG DOCKER
-EXPOSE 8080
+EXPOSE 80
 
-RUN apk update && apk add git openssh php5 php5-curl php5-phar php5-json php5-openssl php5-pcntl bash procps coreutils grep curl jq
+RUN apk update && apk add --no-cache \
+	libcap php5-apache2 git openssh php5 php5-curl php5-phar php5-json php5-openssl php5-pcntl bash procps coreutils grep curl jq
 RUN delgroup $(getent group $DOCKER | cut -d: -f1) && addgroup -g $DOCKER docker && adduser -G docker -D -s /bin/bash user
 
 USER user
@@ -19,6 +20,19 @@ RUN git clone https://github.com/2600hz/docker ./kazoo-docker \
 	&& cd /home/user/tests \
 	&& git clone https://$TOKEN@github.com/2600hz/make-busy-callflow.git ./Callflow
 
+COPY etc/make-busy.conf /etc/apache2/conf.d/make-busy.conf
+
 WORKDIR /home/user/make-busy/ci
 ENV HOME=$WORKDIR
+COPY build/run.sh ./run.sh
+COPY build/volume.sh ./volume.sh
+
+COPY etc/make-busy.commit ./make-busy.commit
+COPY etc/make-busy-callflow.commit ./make-busy-callflow.commit
+COPY build/checkout.sh build/checkout.sh
+RUN build/checkout.sh
+
+USER root
 ENTRYPOINT ./run.sh
+
+
