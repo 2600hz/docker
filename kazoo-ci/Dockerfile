@@ -2,6 +2,7 @@ FROM docker
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 ARG TOKEN
+ENV TOKEN
 ARG DOCKER
 EXPOSE 80
 
@@ -24,15 +25,13 @@ COPY etc/make-busy.conf /etc/apache2/conf.d/make-busy.conf
 
 WORKDIR /home/user/make-busy/ci
 ENV HOME=$WORKDIR
-COPY build/run.sh ./run.sh
-COPY build/volume.sh ./volume.sh
 
 COPY etc/make-busy.commit ./make-busy.commit
 COPY etc/make-busy-callflow.commit ./make-busy-callflow.commit
 COPY build/checkout.sh build/checkout.sh
 RUN build/checkout.sh
+COPY build/run.sh ./run.sh
+COPY build/volume.sh ./volume.sh
 
 USER root
 ENTRYPOINT ./run.sh
-
-
