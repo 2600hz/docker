@@ -6,7 +6,7 @@ ARG DOCKER
 EXPOSE 80
 
 RUN apk update && apk add --no-cache \
-	libcap php5-apache2 git openssh php5 php5-curl php5-phar php5-json php5-openssl php5-pcntl bash procps coreutils grep curl jq
+	php5-apache2 git openssh php5 php5-curl php5-zlib php5-phar php5-json php5-openssl php5-pcntl bash procps coreutils grep curl jq
 RUN delgroup $(getent group $DOCKER | cut -d: -f1) && addgroup -g $DOCKER docker && adduser -G docker -D -s /bin/bash user
 
 USER user
