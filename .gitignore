@@ -9,3 +9,4 @@ export/freeswitch/freeswitch.tar
 export/kazoo/kazoo.tar
 export/kamailio/kamailio.tar
 export/monster-ui/monster-ui.tar
+kazoo-ci/etc/*.commit
