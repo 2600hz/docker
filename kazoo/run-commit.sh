@@ -2,8 +2,16 @@
 COMMIT=$1
 NETWORK=${NETWORK:-"kazoo"}
 NAME=kazoo.$NETWORK
-docker stop -t 1 $NAME
-docker rm -f $NAME
+
+if [ -n "$(docker ps -aq -f name=$NAME)" ]
+then
+   echo -n "stopping: "
+   docker stop -t 1 $NAME
+   echo -n "removing: "
+   docker rm -f $NAME
+fi
+
+echo -n "starting: $NAME "
 docker run -td \
 	--net $NETWORK \
 	-h $NAME \
