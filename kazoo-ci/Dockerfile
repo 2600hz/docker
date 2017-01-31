@@ -18,7 +18,8 @@ RUN git clone https://github.com/2600hz/docker ./kazoo-docker \
 	&& ./composer update \
 	&& mkdir -p /home/user/tests \
 	&& cd /home/user/tests \
-	&& git clone https://$TOKEN@github.com/2600hz/make-busy-callflow.git ./Callflow
+	&& git clone https://$TOKEN@github.com/2600hz/make-busy-callflow.git ./Callflow \
+	&& git clone https://$TOKEN@github.com/2600hz/make-busy-conference.git ./Conference
 
 COPY etc/make-busy.conf /etc/apache2/conf.d/make-busy.conf
 
@@ -27,6 +28,7 @@ ENV HOME=$WORKDIR
 
 COPY etc/make-busy.commit ./make-busy.commit
 COPY etc/make-busy-callflow.commit ./make-busy-callflow.commit
+COPY etc/make-busy-conference.commit ./make-busy-conference.commit
 COPY build/checkout.sh build/checkout.sh
 RUN build/checkout.sh
 COPY build/run.sh ./run.sh
