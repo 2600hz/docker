@@ -24,7 +24,7 @@ docker run \
 	--name $NAME \
 	-v /var/run/docker.sock:/var/run/docker.sock \
 	-v kazoo-ci:/home/user/volume \
-	-p 80:8080 \
+	-p 80:80 \
 	-e HOME=/home/user \
 	-e TOKEN=$1 \
 	-td kazoo/ci
