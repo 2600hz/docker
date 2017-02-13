@@ -16,3 +16,5 @@ for app in accounts callflows numbers pbxs voip webhooks
 do
 	git clone --depth 1 --no-single-branch https://github.com/2600hz/monster-ui-$app $app
 done
+
+

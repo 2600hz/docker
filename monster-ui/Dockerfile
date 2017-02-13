@@ -6,6 +6,8 @@ WORKDIR /root
 
 ARG REPO=https://github.com/2600hz/monster-ui.git 
 ARG COMMIT=HEAD
+ARG APPS
+ARG TOKEN
 
 ENV WWW=/usr/share/nginx
 
@@ -14,6 +16,9 @@ RUN build/setup-os.sh
 
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
+
+COPY build/setup-apps.sh build/setup-apps.sh
+RUN build/setup-apps.sh
 
 COPY etc etc
 
