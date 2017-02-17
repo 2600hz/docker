@@ -95,7 +95,7 @@ Sanity check
 
 ## Check Kazoo status (this is probably what you should see)
 
-```
+```sh
 $ docker exec kazoo.kazoo sup kz_nodes status
 
 Node          : kazoo@kazoo.kazoo
@@ -128,7 +128,7 @@ WhApps        : kamailio(17m37s)
 
 ## Check Kazoo knows about Kamailio instance
 
-```
+```sh
 $ docker exec kazoo.kazoo sup ecallmgr_maintenance acl_summary
 +--------------------------------+-------------------+---------------+-------+------------------+----------------------------------+
 | Name                           | CIDR               | List          | Type  | Authorizing Type | ID                               |
@@ -139,31 +139,9 @@ $ docker exec kazoo.kazoo sup ecallmgr_maintenance acl_summary
 
 ## Check Kamailio has FreeSwitch as dispatcher
 
-```
-$ docker exec kamailio.kazoo kamcmd dispatcher.list
-{
-        NRSETS: 1
-        RECORDS: {
-                SET: {
-                        ID: 1
-                        TARGETS: {
-                                DEST: {
-                                        URI: sip:freeswitch.kazoo:11000
-                                        FLAGS: AP
-                                        PRIORITY: 1
-                                        ATTRS: {
-                                                BODY:  
-                                                DUID: 
-                                                MAXLOAD: 0
-                                                WEIGHT: 0
-                                                RWEIGHT: 0
-                                                SOCKET: 
-                                        }
-                                }
-                        }
-                }
-        }
-}
+```sh
+$ docker exec kamailio.kazoo kamcmd dispatcher.list | grep URI
+URI: sip:freeswitch.kazoo:11000
 ```
 
 Monster-UI
