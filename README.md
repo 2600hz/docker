@@ -11,9 +11,9 @@ please check [production images](https://github.com/jamhed/kazoo-docker).
 Notes
 =====
 
-* All components depends on base-os image (Debian:Jessie with Erlang 18 preinstalled)
-* BigCouch is replaced by CouchDB 1.6
-* All images are not optimized by size (however it is possible to combine)
+* All components depends on base-os image (debian jessie)
+* BigCouch is replaced by CouchDB 2.0
+* Containers are big (as they contains complete source code and build tools)
 
 Init
 ====
