@@ -1,6 +1,6 @@
 #!/bin/sh
 FLAGS=${1:-"-td"}
-IMAGE=${2:-"kazoo/couchdb"}
+IMAGE=${2:-"kazoo/couchdb2"}
 NETWORK=${NETWORK:-"kazoo"}
 NAME=couchdb.$NETWORK
 
