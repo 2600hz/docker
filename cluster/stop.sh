@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 docker stop monster-ui.kazoo
 docker stop kamailio.kazoo
 docker stop couchdb.kazoo

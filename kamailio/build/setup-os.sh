@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 apt-get -y install \
 	make flex bison libmysqlclient-dev \
 	libssl-dev libcurl4-openssl-dev \

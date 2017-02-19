@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 FLAGS=${1:-"-td"}
 IMAGE=${2:-"kazoo/freeswitch"}
 NETWORK=${NETWORK:-"kazoo"}

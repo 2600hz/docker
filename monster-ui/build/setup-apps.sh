@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 cd $WWW/html/src/apps
 for app in $APPS
 do

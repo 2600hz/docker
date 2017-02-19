@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 NETWORK=${NETWORK:-"kazoo"}
 if [ "$1" = "" ]
 then

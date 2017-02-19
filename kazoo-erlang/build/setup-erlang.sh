@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 curl -O -k https://raw.githubusercontent.com/kerl/kerl/master/kerl
 chmod +x kerl
 ./kerl update releases

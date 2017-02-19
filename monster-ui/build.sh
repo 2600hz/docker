@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 NETWORK=${NETWORK:-"kazoo"}
 REPO=${2:-"https://github.com/2600hz/monster-ui.git"}
 COMMIT=${1:-"$(../bin/get-commit $REPO)"}

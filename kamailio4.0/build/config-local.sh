@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 cp /etc/kamailio/local.cfg.orig /etc/kamailio/local.cfg
 LOCAL=/etc/kamailio/local.cfg
 

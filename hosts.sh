@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 NETWORK=${1:-"kazoo"}
 for CONTAINER in monster-ui kazoo rabbitmq freeswitch couchdb makebusy makebusy-fs-auth makebusy-fs-pbx makebusy-fs-carrier
 do

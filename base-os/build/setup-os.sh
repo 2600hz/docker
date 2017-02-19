@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 useradd -s /bin/bash -m user
 
 apt-get -y update

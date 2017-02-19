@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 cp -a etc/kamailio /etc/
 
 kamdbctl reinit

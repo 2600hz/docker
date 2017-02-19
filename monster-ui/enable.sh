@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 NETWORK=${NETWORK:-"kazoo"}
 echo enable monster-ui applications
 docker cp monster-ui.$NETWORK:/usr/share/nginx/html/src/apps apps
