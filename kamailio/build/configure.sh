@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 cd kamailio
 
 INCLUDE_MODULES="acc \

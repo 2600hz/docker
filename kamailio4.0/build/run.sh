@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 export SHM_MEMORY=64
 export PKG_MEMORY=8
 export USER=kamailio

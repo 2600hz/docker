@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 ID=$1
 FREESWITCH=$2
 if [ -z "$FREESWITCH" ]

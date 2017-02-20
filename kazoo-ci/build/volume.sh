@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 if [ -d /home/user/volume ]
 then
 	mkdir -p /home/user/volume/log

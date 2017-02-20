@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 CONTAINER=${1:-"freeswitch.kazoo"}
 rm -rf freeswitch
 rm -f freeswitch.tar
