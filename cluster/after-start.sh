@@ -1,4 +1,5 @@
 #!/bin/sh -e
+
 echo Init the system
 
 ./sup crossbar_maintenance create_account admin kamailio.kazoo admin admin
@@ -12,4 +13,4 @@ rm -rf apps
 
 ./sup crossbar_maintenance init_apps /home/user/apps http://kazoo.kazoo:8000/v2
 
-docker exec -ti kamailio.kazoo kamctl dispatcher reload 
+docker exec -ti kamailio.kazoo kamctl dispatcher reload

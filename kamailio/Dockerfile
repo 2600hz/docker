@@ -4,9 +4,11 @@ MAINTAINER Roman Galeev <jamhed@2600hz.com>
 USER root
 WORKDIR /root
 
-ENV NETWORK=kazoo
 ENV RABBITMQ=rabbitmq.$NETWORK
-ARG REPO=https://github.com/kamailio/kamailio.git
+
+ARG NETWORK
+ARG REPO
+ARG KAMAILIO_COMMIT
 ARG CONFIG=master
 
 COPY build/setup-os.sh build/setup-os.sh
@@ -14,10 +16,6 @@ RUN build/setup-os.sh
 
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
-
-COPY etc/commit commit
-COPY build/setup-commit.sh build/setup-commit.sh
-RUN build/setup-commit.sh
 
 COPY build/configure.sh configure.sh
 RUN ./configure.sh

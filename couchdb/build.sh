@@ -1,3 +1,6 @@
 #!/bin/sh -e
-NETWORK=${NETWORK:-"kazoo"}
-docker build $BUILD_FLAGS -t $NETWORK/couchdb2 .
+
+NETWORK=${NETWORK:-'kazoo'}
+
+docker build $BUILD_FLAGS \
+       -t $NETWORK/couchdb2 .

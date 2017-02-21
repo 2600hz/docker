@@ -1,2 +1,3 @@
 #!/bin/sh -e
+
 docker exec -ti kazoo.zone1 sup "$*"

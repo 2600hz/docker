@@ -1,4 +1,5 @@
 #!/bin/sh -e
+
 cd kamailio
 
 INCLUDE_MODULES="acc \
@@ -138,9 +139,9 @@ xhttp_rpc \
 xprint"
 
 make FLAVOUR=kamailio cfg \
-	prefix=/usr/local/kamailio \
-	skip_modules="${EXCLUDE_MODULES}" \
-	include_modules="${INCLUDE_MODULES}" \
-	SCTP=0 \
-	STUN=1 \
-	TLS_HOOKS=1
+     prefix=/usr/local/kamailio \
+     skip_modules="${EXCLUDE_MODULES}" \
+     include_modules="${INCLUDE_MODULES}" \
+     SCTP=0 \
+     STUN=1 \
+     TLS_HOOKS=1

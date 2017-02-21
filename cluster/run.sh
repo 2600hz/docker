@@ -1,4 +1,5 @@
 #!/bin/sh -e
+
 docker network create kazoo
 docker network create zone1
 docker network create zone2
@@ -13,11 +14,11 @@ RABBITMQ_IP=$(bin/get-ip rabbitmq.kazoo)
 COUCHDB_IP=$(bin/get-ip couchdb.kazoo)
 
 export NETWORK=zone1
-kazoo/run.sh "-td --add-host rabbitmq.kazoo:$RABBITMQ_IP --add-host couchdb.kazoo:$COUCHDB_IP"
+kazoo/run.sh '-td --add-host rabbitmq.kazoo:'$RABBITMQ_IP' --add-host couchdb.kazoo:'$COUCHDB_IP
 freeswitch/run.sh
 
 export NETWORK=zone2
-kazoo/run.sh "-td --add-host rabbitmq.kazoo:$RABBITMQ_IP --add-host couchdb.kazoo:$COUCHDB_IP"
+kazoo/run.sh '-td --add-host rabbitmq.kazoo:'$RABBITMQ_IP' --add-host couchdb.kazoo:'$COUCHDB_IP
 freeswitch/run.sh
 
 # disable isolation

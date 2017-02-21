@@ -1,6 +1,8 @@
 FROM debian:jessie
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
+ARG NETWORK
+
 ENV DEBIAN_FRONTEND noninteractive
 ENV APT_LISTCHANGES_FRONTEND=none
 

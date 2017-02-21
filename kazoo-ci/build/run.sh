@@ -1,4 +1,5 @@
 #!/bin/sh -e
+
 IP=$(hostname -i)
 export PHPRC=./php.ini
 mkdir -p /run/apache2

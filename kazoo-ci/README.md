@@ -1,6 +1,7 @@
 # Kazoo CI
 
-Continious integration server. Accepts Github webhooks and trigger commit-dependent build and test process.
+Continious integration server.
+Accepts Github webhooks and trigger commit-dependent build and test process.
 Reports test results back to Github, and provides test run files.
 
 # Build and test commit manually

@@ -1,8 +1,9 @@
 #!/bin/sh -e
-if [ "$1" = "" ]
+
+if [ "$1" = '' ]
 then
-	echo Usage: $0 remote-git-uri
-	exit
+    echo Usage: $0 remote-git-uri
+    exit
 fi
 
-git ls-remote $1 | head -1 | sed "s/HEAD//"
+git ls-remote $1 | head -1 | sed 's/HEAD//'

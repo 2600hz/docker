@@ -17,4 +17,3 @@ How it works
 
 The goal is to simplify build process for non-linux environments. The container needs to have access
 to the host Docker and will build and run images on the host.
-
