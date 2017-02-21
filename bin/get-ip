@@ -1,9 +1,10 @@
 #!/bin/sh -e
-NETWORK=${NETWORK:-"kazoo"}
-if [ "$1" = "" ]
+
+NETWORK=${NETWORK:-'kazoo'}
+if [ "$1" = '' ]
 then
-	echo Usage: $0 container
-	exit
+    echo Usage: $0 container
+    exit
 fi
 
-docker inspect --format "{{ (index .NetworkSettings.Networks \"$NETWORK\").IPAddress }}" $1
+docker inspect --format '{{ (index .NetworkSettings.Networks "'$NETWORK'").IPAddress }}' $1

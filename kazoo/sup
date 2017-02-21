@@ -1,3 +1,4 @@
 #!/bin/sh -e
-NETWORK=${NETWORK:-"kazoo"}
+
+NETWORK=${NETWORK:-'kazoo'}
 docker exec -i kazoo.$NETWORK sup "$*"

@@ -1,3 +1,3 @@
 #!/bin/sh -e
-cd freeswitch
-make
+
+cd freeswitch && make

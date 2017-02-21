@@ -1,4 +1,5 @@
 #!/bin/sh -e
+
 docker stop monster-ui.kazoo
 docker stop kamailio.kazoo
 docker stop couchdb.kazoo
@@ -13,4 +14,3 @@ docker stop kazoo.zone2
 docker network rm kazoo
 docker network rm zone1
 docker network rm zone2
-

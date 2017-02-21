@@ -1,15 +1,16 @@
 #!/bin/sh -e
-NETWORK=${NETWORK:-"kazoo"}
+
+NETWORK=${NETWORK:-'kazoo'}
 echo wait for kazoo.$NETWORK to start '(you may check docker logs if impatient)'
 watch -g "docker logs kazoo.$NETWORK | grep 'auto-started kapps'" > /dev/null
 
 cd kazoo
-echo -n "create master account: "
+echo -n 'create master account: '
 ./sup crossbar_maintenance create_account admin kamailio.$NETWORK admin admin
-echo -n "add freeswitch to kazoo: "
+echo -n 'add freeswitch to kazoo: '
 ./sup ecallmgr_maintenance add_fs_node freeswitch@freeswitch.$NETWORK
 
-echo -n "enable console debug: "
+echo -n 'enable console debug: '
 ./sup kazoo_maintenance console_level debug
 
 echo wait fot freeswitch to complete connect
@@ -33,8 +34,8 @@ rm -rf apps
 docker exec -i --user root kazoo.$NETWORK rm -rf apps
 
 echo refresh kamailio dispatcher
-docker exec -i kamailio.$NETWORK kamcmd dispatcher.reload 
+docker exec -i kamailio.$NETWORK kamcmd dispatcher.reload
 
 echo commit couchdb to couchdb-init
 docker commit couchdb.$NETWORK $NETWORK/couchdb-init
-cd ../
+cd ..

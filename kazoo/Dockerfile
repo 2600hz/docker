@@ -21,7 +21,7 @@ COPY build/run.sh run.sh
 ENTRYPOINT ./run.sh
 
 ENV PATH $PATH:/home/user/bin
-COPY build/sup bin/sup 
+COPY build/sup bin/sup
 
 COPY build/cmd.sh ./cmd.sh
 

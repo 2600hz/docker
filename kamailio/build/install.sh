@@ -39,4 +39,3 @@ mkdir -p /var/run/kamailio/
 chown kamailio:kamailio /var/run/kamailio/
 
 chown -R kamailio:kamailio $CFG_BASE
-

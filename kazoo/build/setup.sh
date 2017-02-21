@@ -1,8 +1,9 @@
 #!/bin/sh -e
+
 if [ -n "$SKIP_BUILD" ]
 then
-	touch skip_build
-	exit 0
+    touch skip_build
+    exit 0
 fi
 
 # REPO is global and must be defined on build
