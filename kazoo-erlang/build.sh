@@ -1,10 +1,10 @@
 #!/bin/sh -e
 
 NETWORK=${NETWORK:-'kazoo'}
-repo=https://github.com/2600hz/kazoo.git
-kazoo_commit=HEAD
+OTP_vsn=${1:-'19.2'}
+kerl_url=${2:-'https://raw.githubusercontent.com/kerl/kerl/master/kerl'}
 
 docker build $BUILD_FLAGS \
-       --build-arg REPO=$repo \
-       --build-arg KAZOO_COMMIT=$kazoo_commit \
+       --build-arg OTP=$OTP_vsn \
+       --build-arg KERL_URL=$kerl_url \
        -t $NETWORK/erlang .
