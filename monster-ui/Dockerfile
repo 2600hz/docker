@@ -4,8 +4,8 @@ MAINTAINER Roman Galeev <jamhed@2600hz.com>
 USER root
 WORKDIR /root
 
-ARG REPO=https://github.com/2600hz/monster-ui.git 
-ARG COMMIT=HEAD
+ARG REPO
+ARG COMMIT_MONSTER
 ARG APPS
 ARG TOKEN
 
@@ -22,7 +22,6 @@ RUN build/setup-apps.sh
 
 COPY etc etc
 
-COPY etc/commit /root/commit
 COPY build/build.sh build/build.sh
 RUN build/build.sh
 

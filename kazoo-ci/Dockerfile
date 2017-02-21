@@ -1,9 +1,16 @@
 FROM docker
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
+EXPOSE 80
+
 ARG TOKEN
 ARG DOCKER
-EXPOSE 80
+ARG REPO_MB
+ARG REPO_MB_CALLFLOW
+ARG REPO_MB_CONFERENCE
+ARG COMMIT_MB
+ARG COMMIT_MB_CALLFLOW
+ARG COMMIT_MB_CONFERENCE
 
 RUN apk update && apk add --no-cache \
 	php5-apache2 git openssh php5 php5-curl php5-zlib php5-phar php5-json php5-openssl php5-pcntl bash procps coreutils grep curl jq tini
@@ -12,25 +19,20 @@ RUN delgroup $(getent group $DOCKER | cut -d: -f1) && addgroup -g $DOCKER docker
 USER user
 WORKDIR /home/user
 
-RUN git clone https://github.com/2600hz/docker ./kazoo-docker \
-	&& git clone https://github.com/2600hz/make-busy ./make-busy \
+RUN git clone --depth 1 https://github.com/2600hz/docker kazoo-docker \
+	&& git clone --depth 1 --branch $COMMIT_MB $REPO_MB make-busy \
 	&& cd make-busy/ci \
 	&& ./composer update \
 	&& mkdir -p /home/user/tests \
 	&& cd /home/user/tests \
-	&& git clone https://$TOKEN@github.com/2600hz/make-busy-callflow.git ./Callflow \
-	&& git clone https://$TOKEN@github.com/2600hz/make-busy-conference.git ./Conference
+	&& git clone --depth 1 --branch $COMMIT_MB_CALLFLOW $REPO_MB_CALLFLOW Callflow \
+	&& git clone --depth 1 --branch $COMMIT_MB_CONFERENCE $REPO_MB_CONFERENCE Conference
 
 COPY etc/make-busy.conf /etc/apache2/conf.d/make-busy.conf
 
 WORKDIR /home/user/make-busy/ci
 ENV HOME=$WORKDIR
 
-COPY etc/make-busy.commit ./make-busy.commit
-COPY etc/make-busy-callflow.commit ./make-busy-callflow.commit
-COPY etc/make-busy-conference.commit ./make-busy-conference.commit
-COPY build/checkout.sh build/checkout.sh
-RUN build/checkout.sh
 COPY build/run.sh ./run.sh
 COPY build/volume.sh ./volume.sh
 

@@ -1,2 +1,3 @@
 #!/bin/sh -e
-git clone $REPO freeswitch
+
+git clone --depth 1 $REPO --branch=$FREESWITCH_COMMIT freeswitch

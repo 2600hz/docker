@@ -1,8 +1,8 @@
 FROM kazoo/base-os
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
-ARG REPO=https://github.com/2600hz/kazoo.git
-ARG COMMIT=HEAD
+ARG REPO
+ARG COMMIT
 
 USER root
 

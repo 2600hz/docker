@@ -1,11 +1,12 @@
 FROM kazoo/base-os
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
-ENV NETWORK=kazoo
 ENV RABBITMQ=rabbitmq.$NETWORK
 ENV FREESWITCH=freeswitch.$NETWORK
 
+ARG NETWORK
 ARG REPO=https://github.com/kamailio/kamailio.git
+ARG KAMAILIO40_COMMIT
 
 USER root
 WORKDIR /root
@@ -13,7 +14,6 @@ WORKDIR /root
 COPY build/setup-os.sh build/setup-os.sh
 RUN build/setup-os.sh
 
-COPY etc/commit /root/commit
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
 

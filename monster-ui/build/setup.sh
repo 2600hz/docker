@@ -3,7 +3,7 @@
 rm -rf $WWW/html
 mkdir -p $WWW/html
 cd $WWW
-git clone --depth 1 --no-single-branch $REPO html
+git clone --depth 1 --branch $COMMIT_MONSTER $REPO html
 
 echo Setup node
 cd $WWW/html

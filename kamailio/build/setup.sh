@@ -1,2 +1,3 @@
 #!/bin/sh -e
-git clone $REPO kamailio
+
+git clone --depth 1 --branch $KAMAILIO_COMMIT $REPO kamailio
