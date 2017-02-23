@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 TOKEN=$1
 DOCKER=${2:-"$(getent group docker | cut -d: -f3)"}
 if [ -z $TOKEN ] || [ -z $DOCKER ]

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 FLAGS=${1:-"-td"}
 NETWORK=${NETWORK:-"kazoo"}
 NAME=kamailio.$NETWORK

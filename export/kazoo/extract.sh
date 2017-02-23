@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 CONTAINER=${1:-"kazoo.kazoo"}
 rm -rf kazoo
 rm -rf kazoo.tar

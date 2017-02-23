@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 COMMIT=$1
 NETWORK=${NETWORK:-"kazoo"}
 NAME=kazoo.$NETWORK

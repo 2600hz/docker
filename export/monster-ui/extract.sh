@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 CONTAINER=${1:-"monster-ui.kazoo"}
 rm -rf monster-ui
 docker cp $CONTAINER:/usr/share/nginx/html/dist ./monster-ui

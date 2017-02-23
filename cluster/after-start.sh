@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 echo Init the system
 
 ./sup crossbar_maintenance create_account admin kamailio.kazoo admin admin

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 rm -rf $WWW/html
 mkdir -p $WWW/html
 cd $WWW

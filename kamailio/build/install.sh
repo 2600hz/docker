@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 KAMAILIO_BASE="/usr/local/kamailio"
 CFG_BASE="$KAMAILIO_BASE/etc/kamailio"

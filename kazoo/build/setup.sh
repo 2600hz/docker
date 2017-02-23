@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 if [ -n "$SKIP_BUILD" ]
 then
 	touch skip_build

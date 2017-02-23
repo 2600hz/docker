@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 LOCAL=/usr/local/kamailio/etc/kamailio/local.cfg
 
 MY_IP=$(hostname -i)
