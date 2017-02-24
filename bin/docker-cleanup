@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh
 docker rm $(docker ps -a --filter status=dead -q)
 docker rm $(docker ps -a --filter status=exited -q)
 docker rmi $(docker images -a --filter=dangling=true -q)
