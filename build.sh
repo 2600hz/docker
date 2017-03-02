@@ -21,7 +21,7 @@ pushd couchdb
 ./build.sh
 popd
 pushd kamailio
-./build.sh d62fd3e4976633aa6b827d527f4e15de0b08068b
+./build.sh 4.4.5
 popd
 pushd freeswitch
 # 1.6.13
