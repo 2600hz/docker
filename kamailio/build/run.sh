@@ -6,8 +6,6 @@ export GROUP=kamailio
 
 ./config-local.sh
 
-sleep 5 && kamcmd dispatcher.reload
-
 exec /usr/local/kamailio/sbin/kamailio -E -DD \
 	-f /usr/local/kamailio/etc/kamailio/kamailio.cfg \
 	-m $SHM_MEMORY -M $PKG_MEMORY -u $USER -g $GROUP
