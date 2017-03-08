@@ -13,6 +13,7 @@ ARG SKIP_BUILD=""
 ARG UID
 ARG GID
 
+
 COPY etc/commit /home/user/commit
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
@@ -31,5 +32,6 @@ USER root
 RUN build/setup_uid.sh
 USER user
 
+COPY etc/sys.config sys.config
 COPY build/build.sh build/build.sh
 RUN build/build.sh
