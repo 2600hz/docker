@@ -10,4 +10,6 @@ git clone $REPO kazoo
 
 . erlang/activate
 cd kazoo
+COMMIT=$(cat ~/commit)
+git reset --hard $(cat ~/commit)
 make deps
