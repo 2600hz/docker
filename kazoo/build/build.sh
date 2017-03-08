@@ -5,4 +5,5 @@ cd kazoo
 git fetch
 COMMIT=$(cat ~/commit)
 git reset --hard $COMMIT
+git clean -d -f
 make compile build-dev-release

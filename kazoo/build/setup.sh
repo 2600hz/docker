@@ -12,4 +12,5 @@ git clone $REPO kazoo
 cd kazoo
 COMMIT=$(cat ~/commit)
 git reset --hard $(cat ~/commit)
+git clean -d -f
 make deps
