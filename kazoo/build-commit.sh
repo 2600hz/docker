@@ -1,7 +1,7 @@
 #!/bin/sh -e
 COMMIT=$1
+REPO=${2:-"https://github.com/2600hz/kazoo.git"}
 NETWORK=${NETWORK:-"kazoo"}
-REPO=https://github.com/2600hz/kazoo.git
 KZ_BUILD=${KZ_BUILD:-""}
 echo Using repository $REPO commit $COMMIT flags:$KZ_BUILD
 echo $COMMIT > etc/commit
