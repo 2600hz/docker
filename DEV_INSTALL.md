@@ -1,6 +1,6 @@
 # Create a development environment
 
-This is a way to get a "uniform" development environment up quickly, particularly useful when onboarding new developers.
+This is a way to get a "uniform" development environment up quickly, particularly useful when on-boarding new developers.
 
 ## Docker
 
