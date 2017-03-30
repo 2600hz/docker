@@ -1,8 +1,8 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
+IMAGE=${2:-"kazoo/couchdb2"}
 NETWORK=${NETWORK:-"kazoo"}
-NAME=${NAME:-"kamailio.$NETWORK"}
-KAZOO=${KAZOO:-"kazoo.$NETWORK"}
+NAME=couchdb.$NETWORK
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
 then
@@ -17,5 +17,4 @@ docker run $FLAGS \
 	--net $NETWORK \
 	-h $NAME \
 	--name $NAME \
-	--env RABBITMQ=${RABBITMQ:-"rabbitmq.$NETWORK"} \
-	kazoo/kamailio
+	$IMAGE

@@ -19,7 +19,6 @@ docker run -v kazoo-ci:/home/user/volume --user root --entrypoint ./volume.sh ka
 
 echo -n "starting: $NAME "
 docker run \
-	 --restart unless-stopped \
 	-h $NAME \
 	--name $NAME \
 	-v /var/run/docker.sock:/var/run/docker.sock \

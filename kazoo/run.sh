@@ -20,7 +20,6 @@ fi
 
 echo -n "starting: $NAME "
 docker run $FLAGS $KAZOO_SOURCE_VOLUME \
-	--restart unless-stopped \
 	--net $NETWORK \
 	-h $NAME \
 	--name $NAME \

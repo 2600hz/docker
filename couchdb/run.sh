@@ -1,6 +1,6 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
-IMAGE=${2:-"kazoo/couchdb2"}
+IMAGE=${2:-"kazoo/couchdb"}
 NETWORK=${NETWORK:-"kazoo"}
 NAME=couchdb.$NETWORK
 
@@ -14,7 +14,6 @@ fi
 echo -n "starting: $NAME "
 
 docker run $FLAGS \
-	--restart unless-stopped \
 	--net $NETWORK \
 	-h $NAME \
 	--name $NAME \

@@ -11,7 +11,6 @@ then
 fi
 echo -n "starting: $NAME "
 docker run $FLAGS \
-	--restart unless-stopped \
 	--net $NETWORK \
 	-h $NAME \
 	--name $NAME \

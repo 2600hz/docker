@@ -1,31 +1,18 @@
-# Licensed under the Apache License, Version 2.0 (the "License"); you may not
-# use this file except in compliance with the License. You may obtain a copy of
-# the License at
-#
-#   http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-# License for the specific language governing permissions and limitations under
-# the License.
-
 FROM debian:jessie
+MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
-MAINTAINER Clemens Stolle klaemo@apache.org
+# Install instructions from https://cwiki.apache.org/confluence/display/COUCHDB/Debian
 
-# Add CouchDB user account
-RUN groupadd -r couchdb && useradd -d /opt/couchdb -g couchdb couchdb
+RUN groupadd -r couchdb && useradd -d /var/lib/couchdb -g couchdb couchdb
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
     erlang-nox \
-    erlang-reltool \
-    haproxy \
     libicu52 \
     libmozjs185-1.0 \
-    openssl \
+    libnspr4 \
+    libnspr4-0d \
   && rm -rf /var/lib/apt/lists/*
 
 # grab gosu for easy step-down from root and tini for signal handling
@@ -36,8 +23,8 @@ RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364
   && rm /usr/local/bin/gosu.asc \
   && chmod +x /usr/local/bin/gosu \
   && gpg --keyserver ha.pool.sks-keyservers.net --recv-keys 6380DC428747F6C393FEACA59A84159D7001A4E5 \
-  && curl -o /usr/local/bin/tini -fSL "https://github.com/krallin/tini/releases/download/v0.14.0/tini" \
-  && curl -o /usr/local/bin/tini.asc -fSL "https://github.com/krallin/tini/releases/download/v0.14.0/tini.asc" \
+  && curl -o /usr/local/bin/tini -fSL "https://github.com/krallin/tini/releases/download/v0.9.0/tini" \
+  && curl -o /usr/local/bin/tini.asc -fSL "https://github.com/krallin/tini/releases/download/v0.9.0/tini.asc" \
   && gpg --verify /usr/local/bin/tini.asc \
   && rm /usr/local/bin/tini.asc \
   && chmod +x /usr/local/bin/tini
@@ -58,55 +45,51 @@ RUN set -xe \
     gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
   done
 
-ENV COUCHDB_VERSION 2.0.0
+ENV COUCHDB_VERSION 1.6.1
 
-# Download dev dependencies
+# download dependencies, compile and install couchdb,
+# set correct permissions, expose couchdb to the outside and disable logging to disk
 RUN buildDeps=' \
-    apt-transport-https \
     gcc \
     g++ \
     erlang-dev \
     libcurl4-openssl-dev \
     libicu-dev \
     libmozjs185-dev \
+    libnspr4-dev \
     make \
   ' \
- && apt-get update -y -qq && apt-get install -y --no-install-recommends $buildDeps \
- && curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
- && echo 'deb https://deb.nodesource.com/node_4.x jessie main' > /etc/apt/sources.list.d/nodesource.list \
- && echo 'deb-src https://deb.nodesource.com/node_4.x jessie main' >> /etc/apt/sources.list.d/nodesource.list \
- && apt-get update -y -qq \
- && apt-get install -y nodejs \
- && npm install -g grunt-cli \
- # Acquire CouchDB source code
- && cd /usr/src && mkdir couchdb \
- && curl -fSL https://dist.apache.org/repos/dist/release/couchdb/source/$COUCHDB_VERSION/apache-couchdb-$COUCHDB_VERSION.tar.gz -o couchdb.tar.gz \
- && curl -fSL https://dist.apache.org/repos/dist/release/couchdb/source/$COUCHDB_VERSION/apache-couchdb-$COUCHDB_VERSION.tar.gz.asc -o couchdb.tar.gz.asc \
- && gpg --verify couchdb.tar.gz.asc \
- && tar -xzf couchdb.tar.gz -C couchdb --strip-components=1 \
- && cd couchdb \
- # Build the release and install into /opt
- && ./configure --disable-docs \
- && make release \
- && mv /usr/src/couchdb/rel/couchdb /opt/ \
- # Cleanup build detritus
- && apt-get purge -y --auto-remove $buildDeps \
- && rm -rf /var/lib/apt/lists/* /usr/lib/node_modules /usr/src/couchdb*
-
-# Add configuration
-COPY local.ini /opt/couchdb/etc/local.d/
-COPY vm.args /opt/couchdb/etc/
+  && apt-get update && apt-get install -y --no-install-recommends $buildDeps \
+  && curl -fSL http://apache.osuosl.org/couchdb/source/$COUCHDB_VERSION/apache-couchdb-$COUCHDB_VERSION.tar.gz -o couchdb.tar.gz \
+  && curl -fSL https://www.apache.org/dist/couchdb/source/$COUCHDB_VERSION/apache-couchdb-$COUCHDB_VERSION.tar.gz.asc -o couchdb.tar.gz.asc \
+  && gpg --verify couchdb.tar.gz.asc \
+  && mkdir -p /usr/src/couchdb \
+  && tar -xzf couchdb.tar.gz -C /usr/src/couchdb --strip-components=1 \
+  && cd /usr/src/couchdb \
+  && ./configure --with-js-lib=/usr/lib --with-js-include=/usr/include/mozjs \
+  && make && make install \
+  && apt-get purge -y --auto-remove $buildDeps \
+  && rm -rf /var/lib/apt/lists/* /usr/src/couchdb /couchdb.tar.gz* \
+  && chown -R couchdb:couchdb \
+    /usr/local/lib/couchdb /usr/local/etc/couchdb \
+    /usr/local/var/lib/couchdb /usr/local/var/log/couchdb /usr/local/var/run/couchdb \
+  && chmod -R g+rw \
+    /usr/local/lib/couchdb /usr/local/etc/couchdb \
+    /usr/local/var/lib/couchdb /usr/local/var/log/couchdb /usr/local/var/run/couchdb \
+  && mkdir -p /var/lib/couchdb \
+  && sed -e 's/^bind_address = .*$/bind_address = 0.0.0.0/' -i /usr/local/etc/couchdb/default.ini \
+  && sed -e 's!/usr/local/var/log/couchdb/couch.log$!/dev/null!' -i /usr/local/etc/couchdb/default.ini
 
 COPY ./docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
 
-# Setup directories and permissions
-RUN chmod +x /docker-entrypoint.sh \
- && mkdir /opt/couchdb/data /opt/couchdb/etc/default.d \
- && chown -R couchdb:couchdb /opt/couchdb/
+# Define mountable directories.
+# VOLUME ["/usr/local/var/lib/couchdb"]
 
-WORKDIR /opt/couchdb
-EXPOSE 5984 4369 9100
-# VOLUME ["/opt/couchdb/data"]
+#EXPOSE 5984
+WORKDIR /var/lib/couchdb
 
 ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
-CMD ["/opt/couchdb/bin/couchdb"]
+CMD ["couchdb"]
+
+COPY etc/local.ini /usr/local/etc/couchdb/local.ini
