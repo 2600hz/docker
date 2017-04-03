@@ -12,3 +12,8 @@ MY_IP=$(hostname -i)
 # rabbitmq
 /bin/sed -i "s/MY_AMQP_URL!.*!/MY_AMQP_URL!kazoo:\/\/guest:guest@$RABBITMQ:5672!/g" $LOCAL
 
+# advertise
+if [ ! -z "$EXT_IP" ]
+then
+	/bin/sed -i "s/listen=UDP_SIP/listen=UDP_SIP advertise $EXT_IP:5060/" $LOCAL
+fi
