@@ -9,4 +9,5 @@ fi
 ../bin/get-commit https://github.com/2600hz/make-busy > etc/make-busy.commit
 ../bin/get-commit https://$TOKEN@github.com/2600hz/make-busy-callflow.git > etc/make-busy-callflow.commit
 ../bin/get-commit https://$TOKEN@github.com/2600hz/make-busy-conference.git > etc/make-busy-conference.commit
+../bin/get-commit https://$TOKEN@github.com/2600hz/make-busy-crossbar.git > etc/make-busy-crossbar.commit
 docker build $BUILD_FLAGS -t kazoo/ci --build-arg TOKEN=$TOKEN --build-arg DOCKER=$DOCKER .

@@ -9,3 +9,6 @@ cd $TESTS/Callflow && git fetch && git reset --hard $CF_COMMIT
 
 CONF_COMMIT=$(cat $MB/ci/make-busy-conference.commit)
 cd $TESTS/Conference && git fetch && git reset --hard $CONF_COMMIT
+
+CROSSBAR_COMMIT=$(cat $MB/ci/make-busy-crossbar.commit)
+cd $TESTS/Crossbar && git fetch && git reset --hard $CROSSBAR_COMMIT
