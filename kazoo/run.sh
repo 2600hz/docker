@@ -29,4 +29,3 @@ docker run $FLAGS $KAZOO_SOURCE_VOLUME \
 	--env NODE_NAME=kazoo \
 	--env KAZOO_APPS=sysconf,blackhole,callflow,cdr,conference,crossbar,fax,hangups,media_mgr,milliwatt,omnipresence,pivot,registrar,reorder,stepswitch,teletype,trunkstore,webhooks,ecallmgr \
 	kazoo/kazoo
-docker logs $NAME --tail 5

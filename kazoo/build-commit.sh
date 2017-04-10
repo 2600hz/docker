@@ -1,6 +1,6 @@
 #!/bin/sh -e
 COMMIT=$1
-REPO=${2:-"https://github.com/2600hz/kazoo.git"}
+REPO=${2:-"https://github.com/alianza-dev/kazoo.git"}
 NETWORK=${NETWORK:-"kazoo"}
 KZ_BUILD=${KZ_BUILD:-""}
 echo Using repository $REPO commit $COMMIT flags:$KZ_BUILD

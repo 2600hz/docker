@@ -10,7 +10,14 @@ git clone $REPO kazoo
 
 . erlang/activate
 cd kazoo
+if [ -n "$PROD_BUILD"]
+then
+echo "Using production branch: $PROD_BUILD"
+git checkout -b alz-prod-4.0 origin/alz-4.0
+else
 COMMIT=$(cat ~/commit)
+echo "Using commit: $COMMIT"
 git reset --hard $COMMIT
 git clean -d -f
+fi
 make deps
