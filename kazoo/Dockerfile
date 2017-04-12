@@ -1,4 +1,4 @@
-FROM kazoo/erlang
+FROM alianza-alianza-docker.jfrog.io/kazoo/erlang
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 # override this (if needed) with run --env option
@@ -8,11 +8,16 @@ ENV KAZOO_APPS=sysconf,blackhole,callflow,cdr,conference,crossbar,fax,hangups,me
 ENV COUCHDB=couchdb.$NETWORK
 ENV RABBITMQ=rabbitmq.$NETWORK
 
-ARG REPO=https://github.com/2600hz/kazoo.git
+ARG REPO=https://github.com/alianza-dev/alz-kazoo.git
 ARG SKIP_BUILD=""
 ARG UID
 ARG GID
+ARG PROD_BUILD
 
+COPY repo /home/user/
+USER root
+RUN chown -R user.user kazoo
+USER user
 
 COPY etc/commit /home/user/commit
 COPY build/setup.sh build/setup.sh
