@@ -9,6 +9,7 @@ echo "Using production branch: $PROD_BUILD"
 git checkout alz-prod-4.0
 cp ../sys.config rel/
 make compile build-release
+rm -rf core rel deps applications
 else
 git fetch
 COMMIT=$(cat ~/commit)
