@@ -3,10 +3,10 @@
 . erlang/activate
 cd kazoo
 
-if [ -n "$PROD_BUILD"]
+if [ -n "$PROD_BUILD" ]
 then
 echo "Using production branch: $PROD_BUILD"
-git checkout alz-prod-4.0 
+git checkout alz-prod-4.0
 cp ../sys.config rel/
 make compile build-release
 else

@@ -1,4 +1,4 @@
-FROM alianza-alianza-docker.jfrog.io/kazoo/erlang 
+FROM alianza-alianza-docker.jfrog.io/kazoo/erlang
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 # override this (if needed) with run --env option
