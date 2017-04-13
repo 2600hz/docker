@@ -1,6 +1,6 @@
 #!/bin/sh -e
 NETWORK=${1:-"kazoo"}
-for CONTAINER in monster-ui kazoo rabbitmq freeswitch couchdb makebusy makebusy-fs-auth makebusy-fs-pbx makebusy-fs-carrier
+for CONTAINER in monster-ui kazoo rabbitmq freeswitch kamailio couchdb makebusy makebusy-fs-auth makebusy-fs-pbx makebusy-fs-carrier
 do
 	if [ "$(docker inspect -f {{.State.Running}} $CONTAINER.$NETWORK)" = "true" ]
 	then
