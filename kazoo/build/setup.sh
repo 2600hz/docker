@@ -17,7 +17,6 @@ then
 	git reset --hard $COMMIT
 	git clean -d -f
 else
-	git branch -D build_branch
 	git fetch origin $BRANCH:build_branch
 	git checkout build_branch
 	git clean -d -f
