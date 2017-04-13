@@ -9,8 +9,17 @@ fi
 git clone $REPO kazoo
 
 . erlang/activate
-cd kazoo
 COMMIT=$(cat ~/commit)
-git reset --hard $COMMIT
-git clean -d -f
+cd kazoo
+
+if [ -z $BRANCH ]
+then
+	git reset --hard $COMMIT
+	git clean -d -f
+else
+	git branch -D build_branch
+	git fetch origin $BRANCH:build_branch
+	git checkout build_branch
+	git clean -d -f
+fi
 make deps
