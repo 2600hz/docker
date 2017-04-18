@@ -1,8 +1,11 @@
 #!/bin/sh -e
-NETWORK=${NETWORK:-"kazoo"}
 REPO=${2:-"https://github.com/2600hz/kazoo.git"}
 COMMIT=${1:-"$(../bin/get-commit $REPO)"}
+
+BRANCH=${BRANCH:-""}
 SKIP_BUILD=${SKIP_BUILD:-""}
+NETWORK=${NETWORK:-"kazoo"}
+
 UID=$(id -u)
 GID=$(id -g)
 
@@ -13,4 +16,5 @@ docker build $BUILD_FLAGS -t $NETWORK/kazoo \
 	--build-arg SKIP_BUILD=$SKIP_BUILD \
 	--build-arg UID=$UID \
 	--build-arg GID=$GID \
+	--build-arg BRANCH=$BRANCH \
 	.
