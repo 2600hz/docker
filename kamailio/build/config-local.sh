@@ -20,5 +20,5 @@ MY_IP=$(hostname -i)
 # advertise
 if [ ! -z "$EXT_IP" ]
 then
-	/bin/sed -i "s/listen=UDP_SIP/listen=UDP_SIP advertise $EXT_IP:5060/" $ROOT/local.cfg
+	/bin/sed -i "s/^listen=UDP_SIP.*$/listen=UDP_SIP advertise $EXT_IP:5060/" $ROOT/local.cfg
 fi
