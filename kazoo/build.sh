@@ -9,7 +9,7 @@ NETWORK=${NETWORK:-"kazoo"}
 UID=$(id -u)
 GID=$(id -g)
 
-echo Using repository $REPO commit $COMMIT
+echo Using repository:$REPO commit:$COMMIT branch:$BRANCH
 echo $COMMIT > etc/commit
 docker build $BUILD_FLAGS -t $NETWORK/kazoo \
 	--build-arg REPO=$REPO \
