@@ -13,8 +13,9 @@ MY_IP=$(hostname -i)
 /bin/sed -i "s/MY_AMQP_URL!.*!/MY_AMQP_URL!kazoo:\/\/guest:guest@$RABBITMQ:5672!/g" $ROOT/local.cfg
 
 # reduce spawn children
-/bin/sed -i "s/^children\s*=.*$/children = 5/g" $ROOT/default.cfg
-/bin/sed -i "s/^tcp_children\s*=.*$/tcp_children = 5/g" $ROOT/default.cfg
+/bin/sed -i "s/^children\s*=.*$/children = 2/g" $ROOT/default.cfg
+/bin/sed -i "s/^tcp_children\s*=.*$/tcp_children = 2/g" $ROOT/default.cfg
+/bin/sed -i "s/amqp_consumer_workers.*$/amqp_consumer_workers\", 4);/" $ROOT/default.cfg
 
 # advertise
 if [ ! -z "$EXT_IP" ]
