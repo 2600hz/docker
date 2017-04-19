@@ -1,19 +1,23 @@
 #!/bin/sh -e
-LOCAL=/usr/local/kamailio/etc/kamailio/local.cfg
+ROOT=/usr/local/kamailio/etc/kamailio
 
 MY_IP=$(hostname -i)
 
 # ip address
-/bin/sed -i "s/MY_IP_ADDRESS!.*!/MY_IP_ADDRESS!$MY_IP!/g" $LOCAL
+/bin/sed -i "s/MY_IP_ADDRESS!.*!/MY_IP_ADDRESS!$MY_IP!/g" $ROOT/local.cfg
 
 # domain
-/bin/sed -i "s/kamailio.2600hz.com/$HOSTNAME/g" $LOCAL
+/bin/sed -i "s/kamailio.2600hz.com/$HOSTNAME/g" $ROOT/local.cfg
 
 # rabbitmq
-/bin/sed -i "s/MY_AMQP_URL!.*!/MY_AMQP_URL!kazoo:\/\/guest:guest@$RABBITMQ:5672!/g" $LOCAL
+/bin/sed -i "s/MY_AMQP_URL!.*!/MY_AMQP_URL!kazoo:\/\/guest:guest@$RABBITMQ:5672!/g" $ROOT/local.cfg
+
+# reduce spawn children
+/bin/sed -i "s/^children\s*=.*$/children = 5/g" $ROOT/default.cfg
+/bin/sed -i "s/^tcp_children\s*=.*$/tcp_children = 5/g" $ROOT/default.cfg
 
 # advertise
 if [ ! -z "$EXT_IP" ]
 then
-	/bin/sed -i "s/listen=UDP_SIP/listen=UDP_SIP advertise $EXT_IP:5060/" $LOCAL
+	/bin/sed -i "s/listen=UDP_SIP/listen=UDP_SIP advertise $EXT_IP:5060/" $ROOT/local.cfg
 fi
