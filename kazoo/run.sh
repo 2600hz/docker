@@ -5,7 +5,7 @@ NAME=${NAME:-"kazoo.$NETWORK"}
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
 then
-echo -n "stopping: "
+	echo -n "stopping: "
 	docker stop -t 1 $NAME
 	echo -n "removing: "
 	docker rm -f $NAME
@@ -28,4 +28,4 @@ docker run $FLAGS $KAZOO_SOURCE_VOLUME \
 	--env RABBITMQ=rabbitmq.$NETWORK \
 	--env NODE_NAME=kazoo \
 	--env KAZOO_APPS=sysconf,blackhole,callflow,cdr,conference,crossbar,fax,hangups,media_mgr,milliwatt,omnipresence,pivot,registrar,reorder,stepswitch,teletype,trunkstore,webhooks,ecallmgr \
-	kazoo/kazoo
+	$NETWORK/kazoo
