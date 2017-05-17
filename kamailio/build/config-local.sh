@@ -2,12 +2,13 @@
 ROOT=/usr/local/kamailio/etc/kamailio
 
 MY_IP=$(hostname -i)
+MY_HOSTNAME=$(hostname)
 
 # ip address
 /bin/sed -i "s/MY_IP_ADDRESS!.*!/MY_IP_ADDRESS!$MY_IP!/g" $ROOT/local.cfg
 
-# domain
-/bin/sed -i "s/kamailio.2600hz.com/$HOSTNAME/g" $ROOT/local.cfg
+# hostname
+/bin/sed -i "s/MY_HOSTNAME!.*!/MY_HOSTNAME!$MY_HOSTNAME!/g" $ROOT/local.cfg
 
 # rabbitmq
 /bin/sed -i "s/MY_AMQP_URL!.*!/MY_AMQP_URL!kazoo:\/\/guest:guest@$RABBITMQ:5672!/g" $ROOT/local.cfg
