@@ -1,6 +1,6 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
-IMAGE=${2:-"kazoo/freeswitch"}
+IMAGE=${2:-"2600hz/freeswitch"}
 NETWORK=${NETWORK:-"kazoo"}
 NAME=${NAME:-"freeswitch.$NETWORK"}
 KAMAILIO=${KAMAILIO:-"kamailio.$NETWORK"}

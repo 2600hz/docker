@@ -18,4 +18,4 @@ docker run $FLAGS \
 	-h $NAME \
 	--name $NAME \
 	--env RABBITMQ=${RABBITMQ:-"rabbitmq.$NETWORK"} \
-	kazoo/kamailio
+	2600hz/kamailio

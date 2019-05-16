@@ -6,6 +6,10 @@ git clone --depth 1 --no-single-branch $REPO html
 
 echo "Setup node"
 cd $WWW/html
+
+npm install --unsafe-perm -g node-sass
+npm install node-sass@latest
+
 npm install
 npm -g install gulp
 
