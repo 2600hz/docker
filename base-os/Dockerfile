@@ -1,12 +1,10 @@
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV APT_LISTCHANGES_FRONTEND=none
 
 ENV BASH_ENV .bashrc
-
-COPY etc/sources.list /etc/apt
 
 USER root
 WORKDIR /root
