@@ -2,7 +2,7 @@
 curl -O -k https://raw.githubusercontent.com/kerl/kerl/master/kerl
 chmod +x kerl
 ./kerl update releases
-./kerl build 19.2 19.2
-./kerl install 19.2 erlang
+./kerl build 21.3 21.3
+./kerl install 21.3 erlang
 . erlang/activate
 ./kerl cleanup all

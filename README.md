@@ -3,7 +3,7 @@ Kazoo as docker containers
 
 Prerequisites for running on MacOS
 ===
-* Install homebrew, and install watch via brew:
+* Install homebrew, and install `watch` via brew:
   `brew install watch`
 * Change monster-ui run.sh to expose port 3000
 * Change kazoo run.sh to expose port 8000
