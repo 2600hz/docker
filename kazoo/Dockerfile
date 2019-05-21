@@ -12,7 +12,7 @@ ENV RABBITMQ=rabbitmq.$NETWORK
 ARG REPO=https://github.com/2600hz/kazoo.git
 ARG SKIP_BUILD
 ARG BRANCH
-ARG UID
+ARG KZUID
 ARG GID
 
 COPY etc/commit /home/user/commit

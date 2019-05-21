@@ -13,6 +13,7 @@ fi
 echo -n "starting: $NAME "
 
 docker run $FLAGS \
+   -p 3000:3000 \
 	--net $NETWORK \
 	-h $NAME \
 	--name $NAME \
