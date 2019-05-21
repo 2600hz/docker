@@ -4,6 +4,9 @@ export NETWORK
 echo -n "starting network: $NETWORK "
 docker network create $NETWORK
 
+echo Creating db volume
+docker volume create kazoo-db
+
 rabbitmq/run.sh
 couchdb/run.sh
 
