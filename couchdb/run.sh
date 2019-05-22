@@ -1,7 +1,7 @@
 #!/bin/sh -e
 VOLUME=${1:-"kazoo-db"}
 FLAGS=${2:-"-td"}
-IMAGE=${3:-"kazoo/couchdb"}
+IMAGE=${3:-"kazoo/couchdb2"}
 NETWORK=${NETWORK:-"kazoo"}
 NAME=couchdb.$NETWORK
 
