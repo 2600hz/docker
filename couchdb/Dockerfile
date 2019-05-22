@@ -2,10 +2,6 @@ FROM debian:stretch
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 # Install instructions from https://docs.couchdb.org/en/master/install/unix.html
-# RUN echo "deb https://apache.bintray.com/couchdb-deb stretch main" \
-#   | sudo tee -a /etc/apt/sources.list
-# RUN curl -L https://couchdb.apache.org/repo/bintray-pubkey.asc \
-#   | sudo apt-key add -
 
 RUN groupadd -r couchdb && useradd -d /var/lib/couchdb -g couchdb couchdb
 
