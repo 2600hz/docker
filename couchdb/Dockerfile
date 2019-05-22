@@ -1,18 +1,19 @@
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
-# Install instructions from https://cwiki.apache.org/confluence/display/COUCHDB/Debian
+# Install instructions from https://docs.couchdb.org/en/master/install/unix.html
 
 RUN groupadd -r couchdb && useradd -d /var/lib/couchdb -g couchdb couchdb
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
-    ca-certificates \
-    curl \
-    erlang-nox \
-    libicu52 \
-    libmozjs185-1.0 \
-    libnspr4 \
-    libnspr4-0d \
+  ca-certificates \
+  gpg \
+  curl \
+  erlang-nox \
+  libicu57 \
+  libmozjs185-1.0 \
+  libnspr4 \
+  dirmngr \
   && rm -rf /var/lib/apt/lists/*
 
 # grab gosu for easy step-down from root and tini for signal handling
@@ -42,22 +43,25 @@ ENV GPG_KEYS \
   E0AF0A194D55C84E4A19A801CDB0C0F904F4EE9B
 RUN set -xe \
   && for key in $GPG_KEYS; do \
-    gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
+  gpg --keyserver ipv4.pool.sks-keyservers.net --recv-keys "$key"; \
   done
 
-ENV COUCHDB_VERSION 1.6.1
+ENV COUCHDB_VERSION 2.3.1
 
 # download dependencies, compile and install couchdb,
 # set correct permissions, expose couchdb to the outside and disable logging to disk
 RUN buildDeps=' \
-    gcc \
-    g++ \
-    erlang-dev \
-    libcurl4-openssl-dev \
-    libicu-dev \
-    libmozjs185-dev \
-    libnspr4-dev \
-    make \
+  build-essential \
+  pkg-config \
+  gcc \
+  g++ \
+  erlang-dev \
+  libcurl4-openssl-dev \
+  libicu-dev \
+  libmozjs185-dev \
+  libnspr4-dev \
+  erlang-reltool \
+  make \
   ' \
   && apt-get update && apt-get install -y --no-install-recommends $buildDeps \
   && curl -fSL http://apache.osuosl.org/couchdb/source/$COUCHDB_VERSION/apache-couchdb-$COUCHDB_VERSION.tar.gz -o couchdb.tar.gz \
@@ -67,29 +71,26 @@ RUN buildDeps=' \
   && tar -xzf couchdb.tar.gz -C /usr/src/couchdb --strip-components=1 \
   && cd /usr/src/couchdb \
   && ./configure --with-js-lib=/usr/lib --with-js-include=/usr/include/mozjs \
-  && make && make install \
+  && make release \
+  && cp -r rel/couchdb /usr/local/etc \
   && apt-get purge -y --auto-remove $buildDeps \
   && rm -rf /var/lib/apt/lists/* /usr/src/couchdb /couchdb.tar.gz* \
-  && chown -R couchdb:couchdb \
-    /usr/local/lib/couchdb /usr/local/etc/couchdb \
-    /usr/local/var/lib/couchdb /usr/local/var/log/couchdb /usr/local/var/run/couchdb \
-  && chmod -R g+rw \
-    /usr/local/lib/couchdb /usr/local/etc/couchdb \
-    /usr/local/var/lib/couchdb /usr/local/var/log/couchdb /usr/local/var/run/couchdb \
+  && chown -R couchdb:couchdb /usr/local/etc/couchdb \
+  && chmod -R g+rw /usr/local/etc/couchdb \
   && mkdir -p /var/lib/couchdb \
-  && sed -e 's/^bind_address = .*$/bind_address = 0.0.0.0/' -i /usr/local/etc/couchdb/default.ini \
-  && sed -e 's!/usr/local/var/log/couchdb/couch.log$!/dev/null!' -i /usr/local/etc/couchdb/default.ini
+  && sed -e 's/^bind_address = .*$/bind_address = 0.0.0.0/' -i /usr/local/etc/couchdb/etc/default.ini \
+  && sed -e 's!/usr/local/var/log/couchdb/couch.log$!/dev/null!' -i /usr/local/etc/couchdb/etc/default.ini
 
 COPY ./docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
 # Define mountable directories.
-# VOLUME ["/usr/local/var/lib/couchdb"]
+VOLUME ["/usr/local/etc/couchdb/data"]
 
 #EXPOSE 5984
 WORKDIR /var/lib/couchdb
 
 ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
-CMD ["couchdb"]
+CMD ["/usr/local/etc/couchdb/bin/couchdb"]
 
-COPY etc/local.ini /usr/local/etc/couchdb/local.ini
+COPY etc/local.ini /usr/local/etc/couchdb/etc/local.ini
